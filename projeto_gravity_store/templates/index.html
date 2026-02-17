@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='Gwhite.svg') }}"
+    />
+
+    <title>Gravity Store</title>
+  </head>
+  <body>
+    <header>
+      <a href="{{ url_for('home') }}">
+        <img
+          src="{{ url_for('static', filename='Gwhite.svg') }}"
+          alt="Logotipo da Gravity Store"
+          id="logo"
+        />
+        <h1 class="titulo">Gravity Store</h1>
+      </a>
+
+      <div class="pesquisa">
+        <form action="#" method="get" id="form">
+          <span class="material-symbols-outlined" id="search-icon">
+            search
+          </span>
+          <input
+            type="search"
+            name="pesquisa"
+            id="pesquisa"
+            placeholder="Pesquisar apps..."
+          />
+        </form>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="about">
+          <h2>Propósito da Gravity Store?</h2>
+          <p>
+            A Gravity Store tem como objetivo centralizar aplicativos de código
+            aberto, facilitando o acesso dos usuários a essas ferramentas. O
+            projeto não possui fins lucrativos e segue em fase de
+            desenvolvimento. Futuramente, pretendo expandir a plataforma para
+            incluir Custom ROMs, módulos e soluções root para usuários
+            avançados.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <nav>
+      <div class="secao">
+        <ul>
+          <li>
+            <a href="{{ url_for('home') }}" class="all">
+              <span class="material-symbols-outlined"> all_inclusive </span>
+              Todos</a
+            >
+          </li>
+          <li>
+            <a href="#" class="apps">
+              <span class="material-symbols-outlined"> apps </span>
+              Aplicativos</a
+            >
+          </li>
+          <li>
+            <a href="#" class="games">
+              <span class="material-symbols-outlined"> gamepad </span>
+              Jogos</a
+            >
+          </li>
+          <li>
+            <a href="#" class="books">
+              <span class="material-symbols-outlined"> book </span>
+              Livros</a
+            >
+          </li>
+          <li>
+            <a href="#" class="musica">
+              <span class="material-symbols-outlined"> music_note_2 </span>
+              Música</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <a href="{{ url_for('login') }}" class="login">
+          <span class="material-symbols-outlined" id="login"> person_add </span>
+        </a>
+      </div>
+    </nav>
+  </body>
+</html>

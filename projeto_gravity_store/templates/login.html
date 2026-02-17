@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='login.css') }}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='Gwhite.svg') }}"
+    />
+
+    <title>Gravity Store - Entrar</title>
+  </head>
+  <body>
+    <header>
+      <a
+        href="{{ url_for('home') }}"
+        style="
+          text-decoration: none;
+          color: inherit;
+          display: flex;
+          align-items: center;
+        "
+      >
+        <img
+          src="{{ url_for('static', filename='Gwhite.svg') }}"
+          alt="Logotipo da Gravity Store"
+          id="logo"
+        />
+        <h1 class="titulo">Gravity Store</h1>
+      </a>
+    </header>
+    <main>
+      <section class="cadastro">
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %}
+        <div class="mensagens-sistema">
+          {% for category, message in messages %}
+          <div class="alerta {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+        {% endif %} {% endwith %}
+
+        <form action="" method="post" class="formlogin">
+          <label class="email">Digite seu E-mail: </label>
+          <span class="material-symbols-outlined" id="icon">
+            alternate_email
+          </span>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="exemplo@email.com"
+          />
+
+          <label class="senha">Digite sua senha: </label>
+          <span class="material-symbols-outlined" id="iconS"> password </span>
+          <input
+            type="password"
+            name="senha"
+            id="senha"
+            placeholder="Digite sua senha"
+          />
+
+          <div class="lembrar">
+            <label class="remember">
+              <input type="checkbox" name="remember" id="remember" />
+              Lembrar de mim
+            </label>
+            <a href="#" id="forgot">Esqueceu a senha?</a>
+          </div>
+
+          <div class="botoes">
+            <button type="submit" id="entra">Entrar</button>
+
+            <a href="{{ url_for('register') }}" id="registro"> Cadastrar </a>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

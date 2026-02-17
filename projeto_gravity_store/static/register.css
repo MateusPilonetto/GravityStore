@@ -1,0 +1,431 @@
+@font-face {
+  font-family: Plush;
+  src: url(PlushTitulo.otf) format(truetype);
+}
+
+html {
+  font-family: "SN Pro", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #030030;
+  background: linear-gradient(
+    46deg,
+    rgba(3, 0, 48, 1) 0%,
+    rgba(4, 4, 54, 1) 35%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  min-height: 50vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  /* Se você quer que o CONTEÚDO tenha margem, mas não a barra, 
+     use padding aqui ou crie um container para o main */
+  padding-bottom: 80px; /* Espaço para o conteúdo não ficar atrás da nav */
+  height: 50vh;
+}
+
+body::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  z-index: -2; /* Garante que fique atrás de tudo */
+
+  /* O TRUQUE: Uma lista gigante de sombras brancas em posições aleatórias (vw = largura da tela, vh = altura) */
+  box-shadow:
+    10vw 15vh #fff,
+    30vw 45vh #fff,
+    70vw 10vh #fff,
+    90vw 85vh #fff,
+    25vw 65vh #fff,
+    55vw 25vh #fff,
+    15vw 95vh #fff,
+    85vw 35vh #fff,
+    40vw 50vh #fff,
+    60vw 80vh #fff,
+    5vw 5vh #fff,
+    95vw 95vh #fff,
+    12vw 33vh #fff,
+    48vw 72vh #fff,
+    82vw 18vh #fff,
+    37vw 88vh #fff,
+    66vw 55vh #fff,
+    22vw 92vh #fff,
+    77vw 41vh #fff,
+    91vw 8vh #fff,
+    4vw 61vh rgba(255, 255, 255, 0.7),
+    52vw 12vh rgba(255, 255, 255, 0.7),
+    28vw 22vh rgba(255, 255, 255, 0.7),
+    64vw 78vh rgba(255, 255, 255, 0.7),
+    98vw 59vh rgba(255, 255, 255, 0.7),
+    18vw 47vh rgba(255, 255, 255, 0.7),
+    74vw 91vh rgba(255, 255, 255, 0.7),
+    33vw 5vh rgba(255, 255, 255, 0.7),
+    88vw 68vh rgba(255, 255, 255, 0.7),
+    44vw 36vh rgba(255, 255, 255, 0.7);
+  /* Você pode adicionar mais linhas se quiser mais estrelas! */
+}
+
+/* --- CAMADA 2: Estrelas Médias e mais próximas (opcional, para profundidade) --- */
+body::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px; /* Um pouco maiores */
+  height: 2px;
+  background: transparent;
+  z-index: -1; /* Atrás do formulário, mas na frente das estrelas pequenas */
+  opacity: 0.8; /* Um pouco mais brilhantes */
+
+  /* Menos estrelas nesta camada */
+  box-shadow:
+    20vw 30vh #fff,
+    60vw 70vh #fff,
+    80vw 20vh #fff,
+    40vw 90vh #fff,
+    10vw 80vh #fff,
+    90vw 40vh #fff,
+    50vw 10vh #fff,
+    30vw 60vh #fff,
+    75vw 50vh #fff,
+    15vw 45vh rgba(255, 255, 255, 0.9),
+    55vw 85vh rgba(255, 255, 255, 0.9),
+    95vw 15vh rgba(255, 255, 255, 0.9),
+    35vw 75vh rgba(255, 255, 255, 0.9),
+    85vw 65vh rgba(255, 255, 255, 0.9),
+    45vw 25vh rgba(255, 255, 255, 0.9),
+    65vw 35vh rgba(255, 255, 255, 0.9),
+    25vw 95vh rgba(255, 255, 255, 0.9),
+    5vw 55vh rgba(255, 255, 255, 0.9),
+    70vw 5vh rgba(255, 255, 255, 0.9);
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 31px;
+  margin-top: 5px;
+  gap: 10px;
+  border: none;
+  height: 60px;
+  padding-top: 10px;
+}
+
+.titulo {
+  font-family: Plush;
+  color: white;
+  text-decoration: none;
+  font-size: 2.5rem;
+  left: 50%;
+}
+
+#logo {
+  width: 65px;
+  height: 65px;
+  padding-left: 20px;
+  color: white;
+}
+
+main {
+  display: flex;
+  min-width: 90vw;
+  min-height: 80vh;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  color: white;
+}
+
+.cadastro {
+  background: linear-gradient(135deg, #000740, #004e92);
+  border-radius: 2rem;
+  padding: 30px;
+  position: relative;
+}
+
+.formR {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 8px;
+}
+
+.formS {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 8px;
+  padding-left: 20px;
+}
+
+.formlogin {
+  gap: 20px;
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 290px;
+  width: 700px;
+  justify-content: space-between;
+}
+
+#icon {
+  position: absolute;
+  right: 58px;
+  top: 18%;
+  transform: translateY(50%);
+  color: white;
+}
+
+#iconS {
+  position: absolute;
+  right: 78px;
+  top: 42%;
+  transform: translateY(50%);
+  color: white;
+}
+
+#iconSN {
+  position: absolute;
+  right: 78px;
+  top: 66%;
+  transform: translateY(50%);
+  color: white;
+}
+
+#iconN {
+  position: absolute;
+  right: 418px;
+  top: 18%;
+  transform: translateY(50%);
+  color: white;
+}
+
+#circle {
+  position: absolute;
+  right: 418px;
+  top: 42%;
+  transform: translateY(50%);
+  color: white;
+}
+
+#phoneIcon {
+  position: absolute;
+  right: 418px;
+  top: 66%;
+  transform: translateY(50%);
+  color: white;
+}
+
+#nome,
+#user,
+#phone {
+  width: 320px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background-color: #3b476b;
+  color: #ffffff; /* Cor do texto que você digita */
+  caret-color: white;
+  font-family: "Google Sans", sans-serif;
+  font-size: 16px; /* Tamanho legível */
+}
+
+.lembrar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#email {
+  width: 320px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background-color: #3b476b;
+  color: #ffffff; /* Cor do texto que você digita */
+  caret-color: white;
+  font-family: "Google Sans", sans-serif;
+  font-size: 16px; /* Tamanho legível */
+}
+
+#email::placeholder {
+  font-family: "Google Sans", sans-serif;
+  font-size: 1rem;
+  padding: 8px;
+}
+
+.email {
+  font-size: 1.3rem;
+}
+
+#senha {
+  width: 320px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background-color: #3b476b;
+  color: #ffffff; /* Cor do texto que você digita */
+  caret-color: white;
+  font-family: "Google Sans", sans-serif;
+  font-size: 16px; /* Tamanho legível */
+}
+
+#senha::placeholder {
+  font-family: "Google Sans", sans-serif;
+  font-size: 1rem;
+  padding: 8px;
+}
+
+#senha_confirmacao {
+  width: 320px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background-color: #3b476b;
+  color: #ffffff; /* Cor do texto que você digita */
+  caret-color: white;
+  font-family: "Google Sans", sans-serif;
+  font-size: 16px; /* Tamanho legível */
+}
+
+#senha_confirmacao::placeholder {
+  font-family: "Google Sans", sans-serif;
+  font-size: 1rem;
+  padding: 8px;
+}
+
+.senha {
+  font-size: 1.3rem;
+}
+
+#remember {
+  align-self: flex-start;
+  top: 10px;
+  font-size: 15px;
+}
+
+.remember {
+  justify-self: center;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#entra {
+  background-color: #3e4a70;
+  gap: 10px;
+  border-radius: 12px;
+  border: none;
+  color: #ffffff;
+  font-size: 1.45rem;
+  width: 152px;
+  height: 40px;
+  font-family: "SN Pro", sans-serif;
+  margin: 5px;
+}
+
+#entra:hover {
+  background-color: #9ad0ff; /* Efeito visual ao passar o mouse */
+  transform: scale(1.1);
+  color: #1e2235;
+  font-family: "SN Pro", sans-serif;
+  font-size: 1.47rem;
+}
+
+.botoes {
+  margin-left: -55px;
+  padding: 10px;
+}
+
+#nome::placeholder {
+  padding-left: 8px;
+}
+
+#user::placeholder {
+  padding-left: 8px;
+}
+
+#phone::placeholder {
+  padding-left: 8px;
+}
+
+#phone::-webkit-outer-spin-button,
+#phone::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#explain {
+  color: white;
+  margin-top: 0;
+  margin-left: 3.5px;
+  font-size: 12px;
+}
+
+#loginPage {
+  background-color: #3e4a70;
+  border-radius: 12px;
+  border: none;
+  color: #ffffff;
+  font-family: "Google Sans", sans-serif;
+  font-size: 1.45rem;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: "SN Pro", sans-serif;
+
+  margin-left: 9px;
+  text-decoration: none;
+}
+
+#loginPage:hover {
+  background-color: #9ad0ff; /* Efeito visual ao passar o mouse */
+  transform: scale(1.1);
+  color: #1e2235;
+  font-family: "SN Pro", sans-serif;
+  font-size: 1.47rem;
+  padding-left: 26px;
+  padding-right: 26px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-radius: 14px;
+}
+
+/* Mensagens de Erro e Sucesso */
+.mensagens-sistema {
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.alerta {
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.alerta.erro {
+  background-color: #ff4d4d; /* Vermelho */
+  border: 1px solid #cc0000;
+}
+
+.alerta.sucesso {
+  background-color: #4caf50; /* Verde */
+  border: 1px solid #388e3c;
+}
