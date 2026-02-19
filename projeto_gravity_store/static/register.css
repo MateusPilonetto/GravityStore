@@ -335,6 +335,7 @@ input[type="checkbox"] {
   height: 40px;
   font-family: "SN Pro", sans-serif;
   margin: 5px;
+  transition: 0.3s;
 }
 
 #entra:hover {
@@ -387,7 +388,7 @@ input[type="checkbox"] {
   padding-top: 5px;
   padding-bottom: 5px;
   font-family: "SN Pro", sans-serif;
-
+  transition: 0.3s;
   margin-left: 9px;
   text-decoration: none;
 }

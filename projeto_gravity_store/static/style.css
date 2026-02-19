@@ -308,6 +308,15 @@ nav {
 
 .popular {
   margin-left: 20px;
+  margin-bottom: 35px;
+}
+
+.oldGames {
+  margin-left: 20px;
+}
+
+.oldApps {
+  margin-left: 20px;
 }
 
 .cards {
@@ -315,6 +324,48 @@ nav {
   flex-flow: row wrap;
   margin-left: -55px;
   margin-top: -30px;
+  margin-bottom: 15px;
+  height: 40vh;
+}
+
+.cardsG {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -55px;
+  margin-top: -30px;
+  height: 40vh;
+}
+
+.cardsA {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -55px;
+  margin-top: -30px;
+  height: 40vh;
+}
+
+.moreG {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#botaoOG {
+  font-family: "Google Sans", sans-serif;
+  font-weight: bold;
+  background-color: #3e4a70;
+  padding: 10px;
+  border-radius: 30px;
+  margin-top: 10px;
+  transition: 0.3s;
+  height: 4vh;
+  width: 7vw;
+  font-size: 20px;
+}
+
+#botaoOG:hover {
+  background-color: #9ad0ff; /* Efeito visual ao passar o mouse */
+  transform: scale(1.1);
+  color: #1e2235;
 }
 
 .title {
@@ -390,4 +441,9 @@ nav {
   background-color: #9ad0ff; /* Efeito visual ao passar o mouse */
   transform: scale(1.1);
   color: #1e2235;
+}
+
+.windows:hover img {
+  content: url(/static/windows-hover.svg);
+  transform: scale(1.1);
 }
