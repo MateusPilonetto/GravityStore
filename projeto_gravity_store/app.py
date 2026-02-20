@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 
 app = Flask(__name__)
 
@@ -16,6 +16,13 @@ def login():
 @app.route("/register")
 def register():
     return render_template("register.html")
+
+# Rota para Pesquisa
+@app.route("/pesquisa")
+def pesquisa():
+    termo = request.args.get('name') 
+    return render_template('search.html', busca=termo)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

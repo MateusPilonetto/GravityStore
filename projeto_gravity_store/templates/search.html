@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+    <title>Pesquisa</title>
+</head>
+<body>
+    <body>
+    <h1>Você pesquisou por: {{ busca }}</h1>
+    
+    {% if busca %}
+        <p>Aqui apareceriam os resultados vindos do banco de dados...</p>
+    {% else %}
+        <p>Você não digitou nada para pesquisar.</p>
+    {% endif %}
+
+    <a href="/">Voltar para a home</a>
+</body>
+</html>
