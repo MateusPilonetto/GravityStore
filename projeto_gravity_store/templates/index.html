@@ -26,6 +26,11 @@
       href="{{ url_for('static', filename='Gwhite.svg') }}"
     />
 
+    <script
+      src="https://kit.fontawesome.com/e44e3818bb.js"
+      crossorigin="anonymous"
+    ></script>
+
     <title>Gravity Store</title>
   </head>
   <body>
@@ -422,9 +427,17 @@
       </div>
 
       <div>
+        {% if session['usuario_logado'] %}
+        <div class="user-area">
+          <i class="fa-regular fa-user fa-2xl"></i>
+          <a href="{{ url_for('login.logout') }}">Sair</a>
+        </div>
+        {% else %}
+
         <a href="{{ url_for('login') }}" class="login">
           <span class="material-symbols-outlined" id="login"> person_add </span>
         </a>
+        {% endif %}
       </div>
     </nav>
   </body>

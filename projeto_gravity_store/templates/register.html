@@ -45,8 +45,12 @@
     </header>
 
     <main>
+      {% if erro %}
+        <p id="erro">{{ erro }}</p>
+        {% endif %}
       <section class="cadastro">
-        <form action="" method="post" class="formlogin">
+        
+        <form action="/submit" method="post" class="formlogin">
           <div class="formR">
             <label class="email">Digite seu nome completo: </label>
             <span class="material-symbols-outlined" id="iconN">
@@ -63,7 +67,12 @@
             <span class="material-symbols-outlined" id="circle">
               account_circle
             </span>
-            <input type="text" name="user" id="user" placeholder="joao.25" />
+            <input
+              type="text"
+              name="username"
+              id="user"
+              placeholder="joao.25"
+            />
 
             <label class="email">Número de telefone: </label>
             <span class="material-symbols-outlined" id="phoneIcon">

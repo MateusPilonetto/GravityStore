@@ -447,3 +447,8 @@ nav {
   content: url(/static/windows-hover.svg);
   transform: scale(1.1);
 }
+
+.user-area {
+  display: flex;
+  margin-top: 25px;
+}

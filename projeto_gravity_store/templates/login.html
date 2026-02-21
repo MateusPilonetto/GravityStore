@@ -47,9 +47,13 @@
         <h1 class="titulo">Gravity Store</h1>
       </a>
     </header>
+
     <main>
+      {% if erro %}
+      <p id="erro">{{ erro }}</p>
+      {% endif %}
       <section class="cadastro">
-        <form action="" method="post" class="formlogin">
+        <form action="/login_auth" method="post" class="formlogin">
           <label class="email">Digite seu E-mail: </label>
           <span class="material-symbols-outlined" id="icon">
             alternate_email
