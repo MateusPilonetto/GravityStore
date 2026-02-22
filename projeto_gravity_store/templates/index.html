@@ -429,8 +429,21 @@
       <div>
         {% if session['usuario_logado'] %}
         <div class="user-area">
-          <i class="fa-regular fa-user fa-2xl"></i>
-          <a href="{{ url_for('login.logout') }}">Sair</a>
+          <div id="discovered">
+            <a href="{{ url_for('login.logout') }}" id="sair">
+              <i class="fa-solid fa-right-from-bracket"></i> Sair</a
+            >
+            <br />
+            <a href="" id="apps">
+              <i class="fa-regular fa-folder-open"></i> Histórico de Apps</a
+            >
+            <br />
+            <a href="" id="perfil"> <i class="fa-solid fa-user"></i> Perfil</a>
+          </div>
+
+          <button id="usuario">
+            <i class="fa-regular fa-user fa-2xl" style="color: white"></i>
+          </button>
         </div>
         {% else %}
 
@@ -440,5 +453,7 @@
         {% endif %}
       </div>
     </nav>
+
+    <script src="{{url_for('static', filename='script.js')}}"></script>
   </body>
 </html>

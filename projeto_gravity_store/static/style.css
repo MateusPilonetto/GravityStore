@@ -450,5 +450,52 @@ nav {
 
 .user-area {
   display: flex;
-  margin-top: 25px;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: -70px;
+}
+
+#usuario {
+  margin-right: 145px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  border: none;
+  background-color: #3e4a70;
+  transition: 0.3s;
+}
+
+#usuario:hover {
+  cursor: pointer;
+  color: #1e2235;
+  border-color: #1e2235;
+  background-color: #9ad0ff;
+  transition: 0.3s;
+}
+
+#discovered {
+  padding: 20px;
+  margin-top: -150px;
+  margin-bottom: 10px;
+  background: linear-gradient(145deg, #000740, #004e92);
+  border-radius: 15px;
+  display: none;
+}
+
+#sair:hover {
+  transform: scale(1.15);
+  color: red;
+}
+
+#apps:hover {
+  transform: scale(1.15);
+  color: lightblue;
+}
+
+#perfil:hover {
+  transform: scale(1.15);
+  color: greenyellow;
 }
