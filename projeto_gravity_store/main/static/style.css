@@ -444,7 +444,7 @@ nav {
 }
 
 .windows:hover img {
-  content: url(/static/windows-hover.svg);
+  content: url(windows-hover.svg);
   transform: scale(1.1);
 }
 

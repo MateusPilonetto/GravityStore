@@ -1,10 +1,10 @@
-from flask import Blueprint, request, render_template, session, redirect, url_for, Flask
+from flask import Blueprint, request, render_template, session, redirect, url_for
 import mysql.connector
 
-login_bp = Blueprint('login', __name__)
-app = Flask(__name__)
-
-
+login_bp = Blueprint('login', __name__, 
+                     template_folder='../templates', 
+                     static_folder='../static',
+                     static_url_path='/login_static') # <-- Adicione isso
 
 db = mysql.connector.connect(
     host="localhost",
@@ -13,14 +13,19 @@ db = mysql.connector.connect(
     database="cadastro"
 )
 
+# Rota trazida do app.py
+@login_bp.route("/login")
+def login():
+    return render_template("login.html")
+
 @login_bp.route('/logout')
 def logout():
-    session.clear() # Limpa toda a sessão
-    return render_template("index.html")
+    session.clear() 
+    return redirect(url_for('main.home')) # Melhor usar redirect com url_for
     
-
 @login_bp.route("/login_auth", methods=['POST'])
-def login_auth(): # Removido o 'email' daqui, vamos pegar do formulário
+def login_auth():
+    # Removido o 'email' daqui, vamos pegar do formulário
     email = request.form.get('email') # Pega o e-mail do formulário
     senha_digitada = request.form.get('senha') # Pega a senha do formulário
     
@@ -38,7 +43,7 @@ def login_auth(): # Removido o 'email' daqui, vamos pegar do formulário
         if usuario:
             if usuario['senha'] == senha_digitada:
                 session['usuario_logado'] = usuario['nome']
-                return render_template("index.html")
+                return redirect(url_for('main.home'))
                 
             else:
                 return render_template("login.html", erro="Senha incorreta!")

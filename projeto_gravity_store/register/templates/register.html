@@ -14,12 +14,12 @@
 
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='register.css') }}"
+      href="{{ url_for('register.static', filename='register.css') }}"
     />
     <link
       rel="icon"
       type="image/png"
-      href="{{ url_for('static', filename='Gwhite.svg') }}"
+      href="{{ url_for('register.static', filename='Gwhite.svg') }}"
     />
 
     <title>Gravity Store - Cadastro</title>
@@ -27,7 +27,7 @@
   <body>
     <header>
       <a
-        href="{{ url_for('home') }}"
+        href="{{ url_for('main.home') }}"
         style="
           text-decoration: none;
           color: inherit;
@@ -36,7 +36,7 @@
         "
       >
         <img
-          src="{{ url_for('static', filename='Gwhite.svg') }}"
+          src="{{ url_for('register.static', filename='Gwhite.svg') }}"
           alt="Logotipo da Gravity Store"
           id="logo"
         />
@@ -124,7 +124,7 @@
             />
 
             <div class="botoes">
-              <a href="{{ url_for('login') }}" id="loginPage">Já tenho conta</a>
+              <a href="{{ url_for('login.login') }}" id="loginPage">Já tenho conta</a>
               <button type="submit" id="entra">Cadastrar</button>
             </div>
           </div>

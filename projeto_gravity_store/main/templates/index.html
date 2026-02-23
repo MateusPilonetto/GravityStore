@@ -6,7 +6,7 @@
 
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
+      href="{{ url_for('main.static', filename='style.css') }}"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,7 +23,7 @@
     <link
       rel="icon"
       type="image/png"
-      href="{{ url_for('static', filename='Gwhite.svg') }}"
+      href="{{ url_for('main.static', filename='Gwhite.svg') }}"
     />
 
     <script
@@ -35,9 +35,9 @@
   </head>
   <body>
     <header>
-      <a href="{{ url_for('home') }}">
+      <a href="{{ url_for('main.home') }}">
         <img
-          src="{{ url_for('static', filename='Gwhite.svg') }}"
+          src="{{ url_for('main.static', filename='Gwhite.svg') }}"
           alt="Logotipo da Gravity Store"
           id="logo"
         />
@@ -387,7 +387,7 @@
       <div class="secao">
         <ul>
           <li>
-            <a href="{{ url_for('home') }}" class="all">
+            <a href="{{ url_for('main.home') }}" class="all">
               <span class="material-symbols-outlined"> all_inclusive </span>
               Todos</a
             >
@@ -407,7 +407,7 @@
           <li class="windows">
             <a href="#" class="musica">
               <img
-                src="/static/windows-white.svg"
+                src="{{ url_for('main.static', filename='windows-white.svg') }}"
                 alt="Icone do windows 10"
                 id="iconW"
                 width="23px"
@@ -447,13 +447,13 @@
         </div>
         {% else %}
 
-        <a href="{{ url_for('login') }}" class="login">
+        <a href="{{ url_for('login.login') }}" class="login">
           <span class="material-symbols-outlined" id="login"> person_add </span>
         </a>
         {% endif %}
       </div>
     </nav>
 
-    <script src="{{url_for('static', filename='script.js')}}"></script>
+    <script src="{{url_for('main.static', filename='script.js')}}"></script>
   </body>
 </html>
