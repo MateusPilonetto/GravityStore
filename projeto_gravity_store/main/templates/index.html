@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Arquivo CSS -->
     <link
       rel="stylesheet"
       href="{{ url_for('main.static', filename='style.css') }}"
     />
-
+    <!-- Fontes google -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
       rel="stylesheet"
@@ -20,12 +22,14 @@
       rel="stylesheet"
     />
 
+    <!--Logo da Gravity Store-->
     <link
       rel="icon"
       type="image/png"
       href="{{ url_for('main.static', filename='Gwhite.svg') }}"
     />
 
+    <!-- Kit de ícones -->
     <script
       src="https://kit.fontawesome.com/e44e3818bb.js"
       crossorigin="anonymous"
@@ -35,6 +39,8 @@
   </head>
   <body>
     <header>
+      <!-- Título e logo inicial -->
+
       <a href="{{ url_for('main.home') }}">
         <img
           src="{{ url_for('main.static', filename='Gwhite.svg') }}"
@@ -44,6 +50,7 @@
         <h1 class="titulo">Gravity Store</h1>
       </a>
 
+      <!-- Barra de pesquisa -->
       <div class="pesquisa">
         <form action="/pesquisa" method="get" id="form">
           <span class="material-symbols-outlined" id="search-icon">
@@ -60,6 +67,7 @@
     </header>
 
     <main>
+      <!-- Sobre a Gravity Store -->
       <section>
         <div class="about">
           <h2>Propósito da Gravity Store?</h2>
@@ -80,12 +88,13 @@
             <br />
             <br />
             <span id="status"
-              ><strong>Status:</strong> Em desenvolvimento (Alpha).
+              ><strong>Status:</strong> Em desenvolvimento (Alpha 2).
             </span>
           </p>
         </div>
       </section>
 
+      <!-- Cards dos apps -->
       <section class="popular">
         <h2>Mais Usados ✨</h2>
 
@@ -182,6 +191,7 @@
         </div>
       </section>
 
+      <!-- Cards do jogos antigos -->
       <section class="oldGames">
         <h2>Jogos Antigos 🕹️</h2>
 
@@ -282,6 +292,7 @@
         </div>
       </section>
 
+      <!-- Cards dos apps antigos -->
       <section class="oldApps">
         <h2>Apps Antigos 📱</h2>
 
@@ -384,6 +395,7 @@
     </main>
 
     <nav>
+      <!-- Barra de navegação -->
       <div class="secao">
         <ul>
           <li>
@@ -426,6 +438,7 @@
         </ul>
       </div>
 
+      <!-- Área do úsuario -->
       <div>
         {% if session['usuario_logado'] %}
         <div class="user-area">
@@ -454,6 +467,7 @@
       </div>
     </nav>
 
+    <!-- Arquivo Java -->
     <script src="{{url_for('main.static', filename='script.js')}}"></script>
   </body>
 </html>
