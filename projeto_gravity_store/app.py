@@ -1,21 +1,15 @@
-from flask import Flask, render_template, url_for
+from flask import Flask
+from register.modules.register import register_bp
+from login.modules.login import login_bp
+from main.modules.main import main_bp
 
 app = Flask(__name__)
+app.secret_key = 'chave_segura'
 
-# Rota para a Página Inicial
-@app.route("/")
-def home():
-    return render_template("index.html")
-
-# Rota para Login
-@app.route("/login")
-def login():
-    return render_template("login.html")
-
-# Rota para Registro
-@app.route("/register")
-def register():
-    return render_template("register.html")
+# O Flask vai cuidar das rotas e pastas automaticamente agora
+app.register_blueprint(register_bp)
+app.register_blueprint(login_bp)
+app.register_blueprint(main_bp)
 
 if __name__ == "__main__":
     app.run(debug=True)

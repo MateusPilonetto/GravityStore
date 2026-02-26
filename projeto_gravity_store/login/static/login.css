@@ -136,10 +136,16 @@ body::after {
 
 main {
   display: flex;
+  flex-direction: column;
   min-width: 90vw;
   min-height: 80vh;
   justify-content: center;
   align-items: center;
+}
+
+#erro {
+  color: red;
+  font-weight: bold;
 }
 
 label {

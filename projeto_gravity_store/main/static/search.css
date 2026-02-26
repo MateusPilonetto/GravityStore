@@ -1,0 +1,105 @@
+html {
+  font-family: "Google Sans", sans-serif;
+  color: aliceblue;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #030030;
+  background: linear-gradient(
+    46deg,
+    rgba(3, 0, 48, 1) 0%,
+    rgba(4, 4, 54, 1) 35%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  min-height: 50vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  /* Se você quer que o CONTEÚDO tenha margem, mas não a barra, 
+     use padding aqui ou crie um container para o main */
+  padding-bottom: 80px; /* Espaço para o conteúdo não ficar atrás da nav */
+}
+
+body::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  z-index: -2; /* Garante que fique atrás de tudo */
+
+  /* O TRUQUE: Uma lista gigante de sombras brancas em posições aleatórias (vw = largura da tela, vh = altura) */
+  box-shadow:
+    10vw 15vh #fff,
+    30vw 45vh #fff,
+    70vw 10vh #fff,
+    90vw 85vh #fff,
+    25vw 65vh #fff,
+    55vw 25vh #fff,
+    15vw 95vh #fff,
+    85vw 35vh #fff,
+    40vw 50vh #fff,
+    60vw 80vh #fff,
+    5vw 5vh #fff,
+    95vw 95vh #fff,
+    12vw 33vh #fff,
+    48vw 72vh #fff,
+    82vw 18vh #fff,
+    37vw 88vh #fff,
+    66vw 55vh #fff,
+    22vw 92vh #fff,
+    77vw 41vh #fff,
+    91vw 8vh #fff,
+    4vw 61vh rgba(255, 255, 255, 0.7),
+    52vw 12vh rgba(255, 255, 255, 0.7),
+    28vw 22vh rgba(255, 255, 255, 0.7),
+    64vw 78vh rgba(255, 255, 255, 0.7),
+    98vw 59vh rgba(255, 255, 255, 0.7),
+    18vw 47vh rgba(255, 255, 255, 0.7),
+    74vw 91vh rgba(255, 255, 255, 0.7),
+    33vw 5vh rgba(255, 255, 255, 0.7),
+    88vw 68vh rgba(255, 255, 255, 0.7),
+    44vw 36vh rgba(255, 255, 255, 0.7);
+  /* Você pode adicionar mais linhas se quiser mais estrelas! */
+}
+
+/* --- CAMADA 2: Estrelas Médias e mais próximas (opcional, para profundidade) --- */
+body::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px; /* Um pouco maiores */
+  height: 2px;
+  background: transparent;
+  z-index: -1; /* Atrás do formulário, mas na frente das estrelas pequenas */
+  opacity: 0.8; /* Um pouco mais brilhantes */
+
+  /* Menos estrelas nesta camada */
+  box-shadow:
+    20vw 30vh #fff,
+    60vw 70vh #fff,
+    80vw 20vh #fff,
+    40vw 90vh #fff,
+    10vw 80vh #fff,
+    90vw 40vh #fff,
+    50vw 10vh #fff,
+    30vw 60vh #fff,
+    75vw 50vh #fff,
+    15vw 45vh rgba(255, 255, 255, 0.9),
+    55vw 85vh rgba(255, 255, 255, 0.9),
+    95vw 15vh rgba(255, 255, 255, 0.9),
+    35vw 75vh rgba(255, 255, 255, 0.9),
+    85vw 65vh rgba(255, 255, 255, 0.9),
+    45vw 25vh rgba(255, 255, 255, 0.9),
+    65vw 35vh rgba(255, 255, 255, 0.9),
+    25vw 95vh rgba(255, 255, 255, 0.9),
+    5vw 55vh rgba(255, 255, 255, 0.9),
+    70vw 5vh rgba(255, 255, 255, 0.9);
+}

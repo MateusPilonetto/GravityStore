@@ -6,7 +6,7 @@
 
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='login.css') }}"
+      href="{{ url_for('login.static', filename='login.css') }}"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,7 +23,7 @@
     <link
       rel="icon"
       type="image/png"
-      href="{{ url_for('static', filename='Gwhite.svg') }}"
+      href="{{ url_for('login.static', filename='Gwhite.svg') }}"
     />
 
     <title>Gravity Store - Entrar</title>
@@ -31,7 +31,7 @@
   <body>
     <header>
       <a
-        href="{{ url_for('home') }}"
+        href="{{ url_for('main.home') }}"
         style="
           text-decoration: none;
           color: inherit;
@@ -40,16 +40,20 @@
         "
       >
         <img
-          src="{{ url_for('static', filename='Gwhite.svg') }}"
+          src="{{ url_for('login.static', filename='Gwhite.svg') }}"
           alt="Logotipo da Gravity Store"
           id="logo"
         />
         <h1 class="titulo">Gravity Store</h1>
       </a>
     </header>
+
     <main>
+      {% if erro %}
+      <p id="erro">{{ erro }}</p>
+      {% endif %}
       <section class="cadastro">
-        <form action="" method="post" class="formlogin">
+        <form action="/login_auth" method="post" class="formlogin">
           <label class="email">Digite seu E-mail: </label>
           <span class="material-symbols-outlined" id="icon">
             alternate_email
@@ -81,7 +85,7 @@
           <div class="botoes">
             <button type="submit" id="entra">Entrar</button>
 
-            <a href="{{ url_for('register') }}" id="registro"> Cadastrar </a>
+            <a href="{{ url_for('register.register') }}" id="registro"> Cadastrar </a>
           </div>
         </form>
       </section>
