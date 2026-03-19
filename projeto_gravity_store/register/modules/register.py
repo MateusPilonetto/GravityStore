@@ -1,5 +1,6 @@
 from flask import Blueprint, request, render_template, redirect, url_for
 import mysql.connector
+from hashlib import sha256
 
 register_bp = Blueprint('register', __name__, 
                         template_folder='../templates', 
@@ -28,6 +29,9 @@ def submit():
     senha = request.form['senha']
     senha_confirmacao = request.form['senha_confirmacao']
 
+    hash_senha = sha256(senha.encode())
+    armazenar_senha = hash_senha.digest()
+
     if senha != senha_confirmacao:
         return(render_template('register.html', erro="As senhas não são iguais!!!"))
 
@@ -37,7 +41,7 @@ def submit():
         try:
             cursor = db.cursor()
             sql = "INSERT INTO people (nome, username, phone, email, senha) VALUES (%s, %s, %s, %s, %s)"
-            cursor.execute(sql, (nome, username, phone, email, senha))
+            cursor.execute(sql, (nome, username, phone, email, armazenar_senha))
             db.commit()
             return render_template("login.html")
     

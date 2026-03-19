@@ -1,5 +1,6 @@
 from flask import Blueprint, request, render_template, session, redirect, url_for
 import mysql.connector
+from hashlib import sha256
 
 login_bp = Blueprint('login', __name__, 
                      template_folder='../templates', 
@@ -28,6 +29,9 @@ def login_auth():
     # Removido o 'email' daqui, vamos pegar do formulário
     email = request.form.get('email') # Pega o e-mail do formulário
     senha_digitada = request.form.get('senha') # Pega a senha do formulário
+
+    hash_senha_digitada = sha256(senha_digitada.encode())
+    senha_C = hash_senha_digitada.digest()
     
     cursor = None
     try:
@@ -41,7 +45,7 @@ def login_auth():
         
         # 2. Verificamos se o usuário existe e se a senha bate
         if usuario:
-            if usuario['senha'] == senha_digitada:
+            if usuario['senha'] == senha_C:
                 session['usuario_logado'] = usuario['nome']
                 return redirect(url_for('main.home'))
                 
