@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\profile",
-    "\\profile\\modules"
+    ""
   ],
-  "SelectedNode": "\\profile\\modules\\profile.py",
+  "SelectedNode": "\\app.py",
   "PreviewInSolutionExplorer": false
 }
