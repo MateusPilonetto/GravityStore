@@ -1,18 +1,22 @@
 from flask import Blueprint, request, render_template, session, redirect, url_for
-import mysql.connector
 from hashlib import sha256
+import pyodbc
 
 login_bp = Blueprint('login', __name__, 
                      template_folder='../templates', 
                      static_folder='../static',
                      static_url_path='/login_static') # <-- Adicione isso
 
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="cadastro"
+servidor = r'localhost\SQLEXPRESS' 
+banco_de_dados = 'gravity_store_people'
+
+string_conexao = (
+    r'Driver={ODBC Driver 17 for SQL Server};'
+    f'Server={servidor};'
+    f'Database={banco_de_dados};'
+    r'Trusted_Connection=yes;'
 )
+
 
 # Rota trazida do app.py
 @login_bp.route("/login")
@@ -22,42 +26,43 @@ def login():
 @login_bp.route('/logout')
 def logout():
     session.clear() 
-    return redirect(url_for('main.home')) # Melhor usar redirect com url_for
-    
-@login_bp.route("/login_auth", methods=['POST'])
-def login_auth():
-    # Removido o 'email' daqui, vamos pegar do formulário
-    email = request.form.get('email') # Pega o e-mail do formulário
-    senha_digitada = request.form.get('senha') # Pega a senha do formulário
+    return redirect(url_for('main.home')) 
 
-    hash_senha_digitada = sha256(senha_digitada.encode())
-    senha_C = hash_senha_digitada.digest()
-    
+
+@login_bp.route('/login_auth', methods=['POST'])
+def login_auth():
+
+    email_digitado = request.form['email']
+    senha_digitada = request.form['senha']
+
+    hash_senha = sha256(senha_digitada.encode())
+    senha_criptografada = hash_senha.hexdigest()
+
+    conexao = None
     cursor = None
     try:
-        cursor = db.cursor(dictionary=True) # Usar dictionary=True facilita muito!
-        
-        # 1. Buscamos o usuário pelo e-mail
-        sql = "SELECT * FROM people WHERE email = %s"
-        cursor.execute(sql, (email,)) # A vírgula mágica aqui!
-        
+        conexao = pyodbc.connect(string_conexao)
+        cursor = conexao.cursor()
+
+        sql = "SELECT * FROM people WHERE email = ? AND senha = ?"
+        cursor.execute(sql, (email_digitado, senha_criptografada))
+
         usuario = cursor.fetchone()
         
-        # 2. Verificamos se o usuário existe e se a senha bate
         if usuario:
-            if usuario['senha'] == senha_C:
-                session['usuario_logado'] = usuario['nome']
-                return redirect(url_for('main.home'))
-                
-            else:
-                return render_template("login.html", erro="Senha incorreta!")
+            session['usuario_logado'] = usuario[0] 
+            session['nome_usuario'] = usuario[1]   
+            
+          
+            return redirect(url_for('main.home')) 
         else:
-            return render_template("login.html", erro="E-mail não encontrado!")
-
+            return render_template('login.html', erro="E-mail ou senha incorretos!")
+        
     except Exception as e:
-        return f"Erro na consulta: {e}"
-    
+        return f"Ocorreu um erro no banco: {e}"
+        
     finally:
         if cursor:
             cursor.close()
-
+        if conexao:
+            conexao.close()
