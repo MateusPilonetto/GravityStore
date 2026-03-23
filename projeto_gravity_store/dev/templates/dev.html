@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{url_for('dev.static', filename='dev.css')}}"
+    />
+    <!-- Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <!--Logo da Gravity Store-->
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('main.static', filename='Gwhite.svg') }}"
+    />
+
+    <title>Developers</title>
+  </head>
+  <body>
+    <header>
+      <a
+        href="{{ url_for('main.home') }}"
+        style="
+          text-decoration: none;
+          color: inherit;
+          display: flex;
+          align-items: center;
+        "
+      >
+        <img
+          src="{{ url_for('dev.static', filename='Gwhite.svg') }}"
+          alt="Logotipo da Gravity Store"
+          id="logo"
+        />
+        <h1 class="titulo">Gravity Store</h1>
+      </a>
+    </header>
+    <main>
+      <section class="cadastro">
+        <form action="/submit" method="post" class="app">
+          <div class="formR">
+            <label class="appName">Qual o nome do app? </label>
+            <input type="text" name="nome" id="nome" placeholder="AppName" />
+
+            <label class="devName">Quem é o dev? </label>
+            <input
+              type="text"
+              name="devName"
+              id="devName"
+              placeholder="joao.25"
+            />
+
+            <label class="linkG">Qual o link do GitHub do Dev? </label>
+            <input
+              type="text"
+              name="linkG"
+              id="linkG"
+              placeholder="github.com/joao123"
+            />
+            <label class="linkG">Qual o link de download do app? </label>
+            <input
+              type="text"
+              name="linkA"
+              id="linkA"
+              placeholder="github.com/app.download"
+            />
+            <label class="iconApp">Digite uma descrição para o app? </label>
+            <textarea
+              name="description"
+              id="desc"
+              placeholder="Digite a descrição aqui"
+            ></textarea>
+          </div>
+
+          <div class="formS">
+            <label class="category">Qual a categoria do App: </label>
+            <input
+              type="text"
+              name="category"
+              id="category"
+              placeholder="Leia a documentação antes"
+            />
+
+            <label class="version">Qual a versão do app? </label>
+            <input
+              type="number"
+              name="version"
+              id="version"
+              placeholder="Digite a versão do app"
+            />
+
+            <label class="size">Qual o tamanho do app? </label>
+            <input
+              type="number"
+              name="size"
+              id="size"
+              placeholder="Digite o tamanho em MB"
+            />
+            <label class="iconApp">Qual o ícone do app? </label>
+            <input type="file" name="iconApp" id="iconApp" accept="image/*" />
+
+            <label class="screenshots"
+              >Selecione algumas imagens do app:
+            </label>
+            <input
+              type="file"
+              name="screenshots"
+              id="screenshots"
+              accept="image/*"
+              multiple
+            />
+
+            <div>
+              <button type="submit" id="botao">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

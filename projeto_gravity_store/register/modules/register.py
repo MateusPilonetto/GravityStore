@@ -5,7 +5,7 @@ from hashlib import sha256
 register_bp = Blueprint('register', __name__, 
                         template_folder='../templates', 
                         static_folder='../static',
-                        static_url_path='/register_static') # <-- Adicione isso
+                        static_url_path='/register_static')
 
 
 servidor = r'localhost\SQLEXPRESS'

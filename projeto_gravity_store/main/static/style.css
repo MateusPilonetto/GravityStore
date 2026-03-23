@@ -315,6 +315,22 @@ nav {
   transform: scale(1.1);
 }
 
+#dev {
+  background-color: #3e4a70;
+  border-radius: 25px;
+  margin-right: 15px;
+  padding: 12px;
+}
+
+#dev:hover {
+  cursor: pointer;
+  color: #1e2235;
+  border-color: #1e2235;
+  background-color: #9ad0ff;
+  transition: 0.3s;
+  transform: scale(1.1);
+}
+
 #status {
   color: red;
 }

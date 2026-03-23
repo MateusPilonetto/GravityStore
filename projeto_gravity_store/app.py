@@ -3,6 +3,7 @@ from register.modules.register import register_bp
 from login.modules.login import login_bp
 from main.modules.main import main_bp
 from person.modules.profile import profile_bp
+from dev.modules.dev import dev_bp
 
 app = Flask(__name__)
 app.secret_key = 'chave_segura'
@@ -12,6 +13,7 @@ app.register_blueprint(register_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(main_bp)
 app.register_blueprint(profile_bp)
+app.register_blueprint(dev_bp)
 
 if __name__ == "__main__":
     app.run(debug=True)
