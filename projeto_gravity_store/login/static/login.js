@@ -1,9 +1,9 @@
-const isLembrarMarcado = "{{ session.get('permanent', False) }}";
+const isLembrarMarcado = "{{ session.permanent }}";
 
-window.addEventListener("beforeunload", function (e) {
+window.addEventListener("pagehide", function () {
   if (isLembrarMarcado !== "True") {
-    fetch("/logout", {
-      method: "GET",
+    fetch("/silent_logout", {
+      method: "POST",
       keepalive: true,
     });
   }

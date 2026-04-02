@@ -14,7 +14,12 @@ def login():
 @login_bp.route('/logout')
 def logout():
     session.clear() 
-    return redirect(url_for('main.home')) 
+    return redirect(url_for('main.home'))
+
+@login_bp.route('/silent_logout', methods=['POST'])
+def silent_logout():
+    session.clear()
+    return '', 204 
 
 @login_bp.route('/login_auth', methods=['POST'])
 def login_auth():
