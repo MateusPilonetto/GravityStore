@@ -19,10 +19,6 @@ def submit():
     email = request.form['email']
     senha = request.form['senha']
     senha_confirmacao = request.form['senha_confirmacao']
-    
-    # ======== ADICIONADO: CAPTURA DO CHECKBOX ========
-    is_dev = 1 if request.form.get('is_dev') else 0
-    # =================================================
 
     if senha != senha_confirmacao:
         return render_template('register.html', erro="As senhas não são iguais!!!")
@@ -36,9 +32,9 @@ def submit():
         conexao = get_db_connection()
         cursor = conexao.cursor()
         
-        
-        sql = "INSERT INTO people (nome, username, phone, email, senha, is_dev) VALUES (%s, %s, %s, %s, %s, %s)"
-        cursor.execute(sql, (nome, username, phone, email, armazenar_senha, is_dev))
+        # O SQL volta a ter apenas 5 valores. O banco colocará o is_dev como 0 automaticamente!
+        sql = "INSERT INTO people (nome, username, phone, email, senha) VALUES (%s, %s, %s, %s, %s)"
+        cursor.execute(sql, (nome, username, phone, email, armazenar_senha))
         
         conexao.commit()
         
