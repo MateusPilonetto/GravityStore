@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, session, redirect, url_for
 from hashlib import sha256
-from instance.conection import get_db_connection
+from database.conection import get_db_connection
 
 login_bp = Blueprint('login', __name__, 
                      template_folder='../templates', 
