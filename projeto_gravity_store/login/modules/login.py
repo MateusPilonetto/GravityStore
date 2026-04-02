@@ -38,10 +38,15 @@ def login_auth():
         if usuario:
             lembrar = request.form.get('remember')
             
+            
+            print(f"--- DEBUG: Valor do checkbox Lembrar: {lembrar} ---")
+            
             if lembrar:
-                session.permanent = True  
+                session.permanent = True
             else:
-                session.permanent = False 
+                session.permanent = False
+            
+            session.modified = True 
 
             session['usuario_logado'] = usuario[0] 
             session['nome_usuario'] = usuario[1]
