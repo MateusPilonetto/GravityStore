@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. BASE E TIPOGRAFIA
+   ========================================================================== */
 html {
   font-family: "Google Sans", sans-serif;
   color: aliceblue;
@@ -16,19 +19,28 @@ body {
   background: #030030;
   background: linear-gradient(
     46deg,
-    rgba(3, 0, 48, 1) 0%,
-    rgba(4, 4, 54, 1) 35%,
+    rgb(0, 0, 0) 0%,
+    rgb(0, 0, 12) 35%,
     rgba(0, 0, 0, 1) 100%
   );
   min-height: 50vh;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
-  /* Se você quer que o CONTEÚDO tenha margem, mas não a barra, 
-     use padding aqui ou crie um container para o main */
-  padding-bottom: 80px; /* Espaço para o conteúdo não ficar atrás da nav */
+  padding-bottom: 80px;
+  /* Espaço para o conteúdo não ficar atrás da nav */
 }
 
+/* Margens laterais padrão para o conteúdo não colar na tela */
+main,
+header,
+nav {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+/* ==========================================================================
+   2. EFEITO DE ESTRELAS NO FUNDO
+   ========================================================================== */
 body::before {
   content: " ";
   position: fixed;
@@ -38,9 +50,7 @@ body::before {
   height: 2px;
   background: transparent;
   background-attachment: fixed;
-  z-index: -2; /* Garante que fique atrás de tudo */
-
-  /* O TRUQUE: Uma lista gigante de sombras brancas em posições aleatórias (vw = largura da tela, vh = altura) */
+  z-index: -2;
   box-shadow:
     70vw 10vh #fff,
     10vw 15vh #fff,
@@ -77,24 +87,19 @@ body::before {
     33vw 5vh rgba(255, 255, 255, 0.7),
     88vw 68vh rgba(255, 255, 255, 0.7),
     44vw 36vh rgba(255, 255, 255, 0.7);
-  /* Você pode adicionar mais linhas se quiser mais estrelas! */
 }
 
-/* --- CAMADA 2: Estrelas Médias e mais próximas (opcional, para profundidade) --- */
 body::after {
   content: " ";
   position: fixed;
   top: 0;
   left: 0;
-  width: 5px; /* Um pouco maiores */
+  width: 5px;
   height: 2px;
   background: transparent;
   background-attachment: fixed;
-
-  z-index: -1; /* Atrás do formulário, mas na frente das estrelas pequenas */
-  opacity: 0.9; /* Um pouco mais brilhantes */
-
-  /* Menos estrelas nesta camada */
+  z-index: -1;
+  opacity: 0.9;
   box-shadow:
     70vw 10vh #fff,
     20vw 30vh #fff,
@@ -122,92 +127,15 @@ body::after {
     70vw 5vh rgba(255, 255, 255, 0.9);
 }
 
-/* Crie uma classe para dar o recuo lateral apenas no que importa */
-main,
-header,
-nav {
-  padding-left: 100px;
-  padding-right: 100px;
-}
-
+/* ==========================================================================
+   3. CABEÇALHO (HEADER E LOGO)
+   ========================================================================== */
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-top: 20px;
-  border: none;
-  outline: none; /* Remove a borda azul ao clicar */
-}
-
-.about {
-  background: linear-gradient(145deg, #000740, #004e92);
-  border-radius: 20px;
-  width: 82vw;
-  height: 30vh;
-  padding: 25px;
-  margin-left: 20px;
-  margin-top: 10px;
-}
-
-.pesquisa {
-  position: relative; /* Necessário para o ícone flutuar */
-  width: 400px; /* Ou um tamanho fixo, ex: 600px */
-  max-width: 800px; /* Impede que fique gigante em telas grandes */
-  border: none;
-  outline: none; /* Remove a borda azul ao clicar */
-  box-shadow: none;
-}
-
-#search-icon {
-  position: absolute;
-  left: 20px; /* Distância da borda esquerda */
-  top: 45%; /* Centraliza verticalmente */
-  transform: translateY(-50%); /* Ajuste fino do centro */
-  color: #aeb9d6; /* Cor do ícone (um cinza azulado claro) */
-  font-size: 25px; /* Tamanho do ícone */
-  pointer-events: none; /* Deixa o clique passar pelo ícone */
-}
-
-/* Efeito ao clicar (Foco) */
-#pesquisa:focus {
-  background-color: #45527a; /* Clareia levemente quando você clica */
-}
-
-#pesquisa {
-  width: 100%;
-  height: 50px; /* Altura confortável igual da foto */
-  background-color: #3b476b; /* Cor de fundo (Azul acinzentado da sua ref) */
-  border: none; /* Remove a borda padrão feia */
-  border-radius: 20px; /* O segredo do formato "Pílula" */
-
-  /* Espaçamento interno */
-  padding-left: 55px; /* Espaço para o ícone na esquerda */
-  padding-right: 20px;
-
-  /* Texto */
-  color: #ffffff; /* Cor do texto que você digita */
-  caret-color: white;
-  font-size: 16px; /* Tamanho legível */
-  font-family: "Google Sans", sans-serif;
-  outline: none; /* Remove a borda azul ao clicar */
-
-  /* Sombra suave (opcional, para dar profundidade) */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#pesquisa::placeholder {
-  font-family: "Google Sans", sans-serif;
-  font-size: 1.2rem;
-  gap: 20px;
-  color: #aeb9d6; /* Mesma cor do ícone para combinar */
-  opacity: 0.7; /* Leve transparência */
-  top: 70%;
-}
-
-#pesquisa::-webkit-search-cancel-button {
-  filter: invert(2) sepia(1) saturate(5);
-  cursor: pointer;
 }
 
 #logo {
@@ -222,17 +150,234 @@ header {
   color: #ffffff;
 }
 
+/* ==========================================================================
+   4. BARRA DE PESQUISA
+   ========================================================================== */
+.pesquisa {
+  position: relative;
+  width: 400px;
+  max-width: 800px;
+}
+
+#search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aeb9d6;
+  font-size: 25px;
+  pointer-events: none;
+}
+
+#pesquisa {
+  width: 100%;
+  height: 50px;
+  background-color: #3b476b;
+  border: none;
+  border-radius: 20px;
+  padding-left: 55px;
+  padding-right: 20px;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: "Google Sans", sans-serif;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  /* Impede que o padding quebre a largura */
+}
+
+#pesquisa:focus {
+  background-color: #45527a;
+}
+
+#pesquisa::placeholder {
+  color: #aeb9d6;
+  opacity: 0.7;
+}
+
+#pesquisa::-webkit-search-cancel-button {
+  filter: invert(2) sepia(1) saturate(5);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   5. ESTRUTURA PRINCIPAL (MAIN E ABOUT)
+   ========================================================================== */
 main {
   display: flex;
   flex-flow: column wrap;
   color: aliceblue;
 }
 
+.about {
+  background: linear-gradient(145deg, #000215, #00172b);
+  border-radius: 20px;
+  max-width: 82vw;
+  padding: 25px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+#status {
+  color: red;
+}
+
+/* ==========================================================================
+   6. CARDS DE APLICATIVOS (O SEGREDO DA ORGANIZAÇÃO)
+   ========================================================================== */
+/* Container dos cards: flexível e usa GAP para dar espaço automático */
+.cards,
+.cardsG,
+.cardsA {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 55px;
+  margin-left: 22px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+/* O card individual - Transformado em classe (.card) e mais responsivo */
+.card {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(145deg, #000215, #00172b);
+  width: 400px;
+  min-height: 140px;
+  border-radius: 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.img {
+  min-width: 100px;
+  height: 100px;
+  background-color: #9ad0ff;
+  border-radius: 15px;
+  margin-right: 15px;
+  /* Espaço entre imagem e texto */
+  overflow: hidden;
+  /* Corta bordas quadradas das imagens de dentro */
+}
+
+/* Textos dentro do card */
+.infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+  padding-top: 1em;
+}
+
+.text {
+  margin: 0 0 10px 0;
+  font-size: 0.9rem;
+  color: #aeb9d6;
+}
+
+.textH:hover {
+  color: #9ad0ff;
+}
+
+.stats {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 0;
+}
+
+.stats h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+#avaliacao {
+  color: yellow;
+}
+
+/* Botão OBTER dentro do card */
+#obter {
+  font-family: "Google Sans", sans-serif;
+  font-weight: bold;
+  background-color: #3e4a70;
+  padding: 8px 15px;
+  border-radius: 30px;
+  transition: 0.3s;
+  margin-left: auto;
+  /* Joga o botão todo para a direita */
+}
+
+#obter:hover {
+  background-color: #9ad0ff;
+  transform: scale(1.1);
+  color: #1e2235;
+}
+
+.titleCard {
+  margin-left: 20px;
+}
+
+/* ==========================================================================
+   7. BOTÃO "EXPLORAR" (MAIS GAMES/APPS)
+   ========================================================================== */
+.moreG {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 50px;
+}
+
+#botaoOG {
+  font-family: "Google Sans", sans-serif;
+  font-weight: bold;
+  background-color: #3e4a70;
+  padding: 10px 20px;
+  border-radius: 30px;
+  margin-top: 10px;
+  transition: 0.3s;
+  font-size: 18px;
+  text-align: center;
+}
+
+#botaoOG:hover {
+  background-color: #9ad0ff;
+  transform: scale(1.1);
+  color: #1e2235;
+}
+
+/* ==========================================================================
+   8. MENU INFERIOR (NAV E BOTÕES)
+   ========================================================================== */
+nav {
+  background: #010016;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  bottom: 0;
+  left: 0;
+  color: aliceblue;
+  position: fixed;
+  z-index: 1000;
+}
+
 ul {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  gap: 50px; /* Aumentei o espaço para parecer mais com uma store */
+  gap: 50px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -242,13 +387,13 @@ li {
   font-family: "Google Sans", sans-serif;
   font-weight: bold;
   background-color: #3e4a70;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 30px;
   transition: 0.3s;
 }
 
 li:hover {
-  background-color: #9ad0ff; /* Efeito visual ao passar o mouse */
+  background-color: #9ad0ff;
   transform: scale(1.1);
   color: #1e2235;
 }
@@ -263,51 +408,30 @@ a {
   align-items: center;
   text-decoration: none;
   color: aliceblue;
-  transition: 0.3s; /* Suaviza o efeito de passar o mouse */
+  transition: 0.3s;
   gap: 5px;
 }
 
 li:hover a {
-  color: #1e2235; /* Efeito visual ao passar o mouse */
-}
-.contato {
-  padding-right: 30px;
+  color: #1e2235;
 }
 
-aside {
-  width: 30%;
-  padding: 20px;
-  padding-top: 10px;
-}
-
-nav {
-  background: #030030;
-  width: 100%;
-  height: 60px; /* Defini uma altura fixa para ficar mais harmônico */
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Centraliza verticalmente os itens */
-  box-sizing: border-box;
-  bottom: 0;
-  left: 0; /* Garante que ela comece do canto esquerdo */
-  color: aliceblue;
-  position: fixed;
-  z-index: 1000; /* Garante que ela fique na frente de tudo */
-}
-
-#login {
+/* Botões do painel / login */
+#login,
+#dev {
   background-color: #3e4a70;
   border-radius: 25px;
   margin-right: 15px;
   padding: 12px;
+  transition: 0.3s;
 }
 
-#login:hover {
+#login:hover,
+#dev:hover {
   cursor: pointer;
   color: #1e2235;
   border-color: #1e2235;
   background-color: #9ad0ff;
-  transition: 0.3s;
   transform: scale(1.1);
 }
 
@@ -315,168 +439,9 @@ nav {
   transform: scale(1.1);
 }
 
-#dev {
-  background-color: #3e4a70;
-  border-radius: 25px;
-  margin-right: 15px;
-  padding: 12px;
-}
-
-#dev:hover {
-  cursor: pointer;
-  color: #1e2235;
-  border-color: #1e2235;
-  background-color: #9ad0ff;
-  transition: 0.3s;
-  transform: scale(1.1);
-}
-
-#status {
-  color: red;
-}
-
-.popular {
-  margin-left: 20px;
-  margin-bottom: 35px;
-}
-
-.oldGames {
-  margin-left: 20px;
-}
-
-.oldApps {
-  margin-left: 20px;
-}
-
-.cards {
-  display: flex;
-  flex-flow: row wrap;
-  margin-left: -55px;
-  margin-top: -30px;
-  margin-bottom: 15px;
-  height: 40vh;
-}
-
-.cardsG {
-  display: flex;
-  flex-flow: row wrap;
-  margin-left: -55px;
-  margin-top: -30px;
-  height: 40vh;
-}
-
-.cardsA {
-  display: flex;
-  flex-flow: row wrap;
-  margin-left: -55px;
-  margin-top: -30px;
-  height: 40vh;
-}
-
-.moreG {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
-#botaoOG {
-  font-family: "Google Sans", sans-serif;
-  font-weight: bold;
-  background-color: #3e4a70;
-  padding: 10px;
-  border-radius: 30px;
-  margin-top: 10px;
-  transition: 0.3s;
-  height: 4vh;
-  width: 7vw;
-  font-size: 20px;
-}
-
-#botaoOG:hover {
-  background-color: #9ad0ff; /* Efeito visual ao passar o mouse */
-  transform: scale(1.1);
-  color: #1e2235;
-}
-
-.title {
-  margin-top: 25px;
-}
-
-.text {
-  margin-top: -20px;
-  margin-bottom: 10px;
-}
-
-/* Mantenha o seu #card como estava, ele vai alinhar a IMAGEM ao lado do GRUPO DE TEXTO */
-#card {
-  display: flex;
-  align-items: center;
-  margin-left: 55px;
-  margin-top: 30px;
-  background: linear-gradient(145deg, #000740, #004e92);
-  height: 17vh;
-  width: 26vw;
-  border-radius: 15px;
-}
-
-.img {
-  margin: 10px;
-  background-color: #9ad0ff;
-  width: 100px;
-  height: 100px;
-  border-radius: 15px;
-}
-
-/* A coluna da direita que segura todo o texto */
-.infos {
-  display: flex;
-  flex-direction: column; /* Empilha: Título em cima, Texto no meio, Stats embaixo */
-  justify-content: center;
-}
-
-/* A linha específica dos números (Nota e Download) */
-.stats {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 5px;
-  justify-content: space-evenly;
-}
-
-.stats h4 {
-  margin: 0;
-  font-size: 14px;
-}
-
-#obter {
-  margin-left: 70px;
-}
-
-#avaliacao {
-  color: yellow;
-}
-
-#obter {
-  font-family: "Google Sans", sans-serif;
-  font-weight: bold;
-  background-color: #3e4a70;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 30px;
-  transition: 0.3s;
-}
-
-#obter:hover {
-  background-color: #9ad0ff; /* Efeito visual ao passar o mouse */
-  transform: scale(1.1);
-  color: #1e2235;
-}
-
-.windows:hover img {
-  content: url(windows-hover.svg);
-  transform: scale(1.1);
-}
-
+/* ==========================================================================
+   9. ÁREA DO USUÁRIO (DESCOBERTO)
+   ========================================================================== */
 .user-area {
   display: flex;
   flex-direction: column;
@@ -502,7 +467,6 @@ nav {
   color: #1e2235;
   border-color: #1e2235;
   background-color: #9ad0ff;
-  transition: 0.3s;
 }
 
 #discovered {
@@ -527,4 +491,17 @@ nav {
 #perfil:hover {
   transform: scale(1.15);
   color: greenyellow;
+}
+
+#category {
+  margin-left: 30px;
+}
+
+.categoria-section {
+  display: flex;
+}
+
+.user {
+  display: flex;
+  gap: 10px;
 }

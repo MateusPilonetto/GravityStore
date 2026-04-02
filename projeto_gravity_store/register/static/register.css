@@ -13,18 +13,15 @@ body {
   background: #030030;
   background: linear-gradient(
     46deg,
-    rgba(3, 0, 48, 1) 0%,
-    rgba(4, 4, 54, 1) 35%,
+    rgb(0, 0, 0) 0%,
+    rgb(0, 0, 12) 35%,
     rgba(0, 0, 0, 1) 100%
   );
   min-height: 50vh;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
-  /* Se você quer que o CONTEÚDO tenha margem, mas não a barra, 
-     use padding aqui ou crie um container para o main */
-  padding-bottom: 80px; /* Espaço para o conteúdo não ficar atrás da nav */
-  height: 50vh;
+  padding-bottom: 80px;
+  /* Espaço para o conteúdo não ficar atrás da nav */
 }
 
 body::before {
@@ -35,7 +32,8 @@ body::before {
   width: 1px;
   height: 1px;
   background: transparent;
-  z-index: -2; /* Garante que fique atrás de tudo */
+  z-index: -2;
+  /* Garante que fique atrás de tudo */
 
   /* O TRUQUE: Uma lista gigante de sombras brancas em posições aleatórias (vw = largura da tela, vh = altura) */
   box-shadow:
@@ -78,11 +76,14 @@ body::after {
   position: absolute;
   top: 0;
   left: 0;
-  width: 2px; /* Um pouco maiores */
+  width: 2px;
+  /* Um pouco maiores */
   height: 2px;
   background: transparent;
-  z-index: -1; /* Atrás do formulário, mas na frente das estrelas pequenas */
-  opacity: 0.8; /* Um pouco mais brilhantes */
+  z-index: -1;
+  /* Atrás do formulário, mas na frente das estrelas pequenas */
+  opacity: 0.8;
+  /* Um pouco mais brilhantes */
 
   /* Menos estrelas nesta camada */
   box-shadow:
@@ -154,7 +155,7 @@ label {
 }
 
 .cadastro {
-  background: linear-gradient(135deg, #000740, #004e92);
+  background: linear-gradient(145deg, #000215, #00172b);
   border-radius: 2rem;
   padding: 30px;
   position: relative;
@@ -240,10 +241,12 @@ label {
   border-radius: 12px;
   border: none;
   background-color: #3b476b;
-  color: #ffffff; /* Cor do texto que você digita */
+  color: #ffffff;
+  /* Cor do texto que você digita */
   caret-color: white;
   font-family: "Google Sans", sans-serif;
-  font-size: 16px; /* Tamanho legível */
+  font-size: 16px;
+  /* Tamanho legível */
 }
 
 .lembrar {
@@ -258,10 +261,12 @@ label {
   border-radius: 12px;
   border: none;
   background-color: #3b476b;
-  color: #ffffff; /* Cor do texto que você digita */
+  color: #ffffff;
+  /* Cor do texto que você digita */
   caret-color: white;
   font-family: "Google Sans", sans-serif;
-  font-size: 16px; /* Tamanho legível */
+  font-size: 16px;
+  /* Tamanho legível */
 }
 
 #email::placeholder {
@@ -280,10 +285,12 @@ label {
   border-radius: 12px;
   border: none;
   background-color: #3b476b;
-  color: #ffffff; /* Cor do texto que você digita */
+  color: #ffffff;
+  /* Cor do texto que você digita */
   caret-color: white;
   font-family: "Google Sans", sans-serif;
-  font-size: 16px; /* Tamanho legível */
+  font-size: 16px;
+  /* Tamanho legível */
 }
 
 #senha::placeholder {
@@ -298,10 +305,12 @@ label {
   border-radius: 12px;
   border: none;
   background-color: #3b476b;
-  color: #ffffff; /* Cor do texto que você digita */
+  color: #ffffff;
+  /* Cor do texto que você digita */
   caret-color: white;
   font-family: "Google Sans", sans-serif;
-  font-size: 16px; /* Tamanho legível */
+  font-size: 16px;
+  /* Tamanho legível */
 }
 
 #senha_confirmacao::placeholder {
@@ -345,7 +354,8 @@ input[type="checkbox"] {
 }
 
 #entra:hover {
-  background-color: #9ad0ff; /* Efeito visual ao passar o mouse */
+  background-color: #9ad0ff;
+  /* Efeito visual ao passar o mouse */
   transform: scale(1.1);
   color: #1e2235;
   font-family: "SN Pro", sans-serif;
@@ -400,7 +410,8 @@ input[type="checkbox"] {
 }
 
 #loginPage:hover {
-  background-color: #9ad0ff; /* Efeito visual ao passar o mouse */
+  background-color: #9ad0ff;
+  /* Efeito visual ao passar o mouse */
   transform: scale(1.1);
   color: #1e2235;
   font-family: "SN Pro", sans-serif;
@@ -428,11 +439,13 @@ input[type="checkbox"] {
 }
 
 .alerta.erro {
-  background-color: #ff4d4d; /* Vermelho */
+  background-color: #ff4d4d;
+  /* Vermelho */
   border: 1px solid #cc0000;
 }
 
 .alerta.sucesso {
-  background-color: #4caf50; /* Verde */
+  background-color: #4caf50;
+  /* Verde */
   border: 1px solid #388e3c;
 }

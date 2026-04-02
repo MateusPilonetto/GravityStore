@@ -36,6 +36,13 @@ def login_auth():
         usuario = cursor.fetchone()
         
         if usuario:
+            lembrar = request.form.get('remember')
+            
+            if lembrar:
+                session.permanent = True  
+            else:
+                session.permanent = False 
+
             session['usuario_logado'] = usuario[0] 
             session['nome_usuario'] = usuario[1]
             

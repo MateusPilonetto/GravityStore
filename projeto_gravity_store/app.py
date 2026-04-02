@@ -1,4 +1,5 @@
 from flask import Flask
+from datetime import timedelta
 from register.modules.register import register_bp
 from login.modules.login import login_bp
 from main.modules.main import main_bp
@@ -7,6 +8,8 @@ from dev.modules.dev import dev_bp
 
 app = Flask(__name__)
 app.secret_key = 'chave_segura'
+
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=30)
 
 # O Flask vai cuidar das rotas e pastas automaticamente agora
 app.register_blueprint(register_bp)

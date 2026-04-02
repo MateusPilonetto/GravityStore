@@ -14,8 +14,8 @@ body {
   background: #030030;
   background: linear-gradient(
     46deg,
-    rgba(3, 0, 48, 1) 0%,
-    rgba(4, 4, 54, 1) 35%,
+    rgb(0, 0, 0) 0%,
+    rgb(0, 0, 12) 35%,
     rgba(0, 0, 0, 1) 100%
   );
   min-height: 50vh;
