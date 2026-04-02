@@ -85,10 +85,13 @@
           <div class="botoes">
             <button type="submit" id="entra">Entrar</button>
 
-            <a href="{{ url_for('register.register') }}" id="registro"> Cadastrar </a>
+            <a href="{{ url_for('register.register') }}" id="registro">
+              Cadastrar
+            </a>
           </div>
         </form>
       </section>
     </main>
+    <script src="{{url_for('login.static', filename='login.js')}}"></script>
   </body>
 </html>

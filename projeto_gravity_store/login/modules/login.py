@@ -43,8 +43,10 @@ def login_auth():
             
             if lembrar:
                 session.permanent = True
+                session['permanent'] = True 
             else:
                 session.permanent = False
+                session['permanent'] = False 
             
             session.modified = True 
 
