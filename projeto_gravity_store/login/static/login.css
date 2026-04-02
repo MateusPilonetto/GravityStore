@@ -1,3 +1,46 @@
+/* =========================================
+   RESPONSIVIDADE - TELAS MENORES (CELULAR)
+   ========================================= */
+@media (max-width: 768px) {
+  /* Ajusta o título */
+  .titulo {
+    font-size: 2rem;
+  }
+
+  #logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Ajusta a caixa de login para caber na tela */
+  .entrar {
+    width: 90%; /* Ocupa 90% da tela e não os 400px fixos */
+    margin: 20px auto; /* Centraliza a caixa */
+    padding-top: 5vh;
+  }
+
+  /* Ajusta o formulário e inputs */
+  .inputs {
+    align-items: center;
+  }
+
+  /* Inputs de email, senha e botão menores para caber no mobile */
+  #email,
+  #senha,
+  #entra {
+    width: 100%; /* Faz o input pegar a largura total da div .entrar */
+    max-width: 300px;
+  }
+
+  /* Centraliza a div do 'Lembrar de mim' e esqueceu a senha */
+  .remember {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
 html {
   font-family: "SN Pro", sans-serif;
 }

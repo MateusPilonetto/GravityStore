@@ -13,6 +13,53 @@ html {
   src: url(PlushTitulo.otf) format(truetype);
 }
 
+/* =========================================
+   RESPONSIVIDADE - TELAS MENORES (CELULAR)
+   ========================================= */
+@media (max-width: 768px) {
+  /* Remove a margem lateral gigante de 100px para telas pequenas */
+  main,
+  header,
+  nav {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  header {
+    flex-direction: column; /* Empilha a logo, barra de busca e perfil */
+    height: auto;
+    padding-bottom: 15px;
+    gap: 15px;
+  }
+
+  .titulo {
+    font-size: 2rem;
+  }
+
+  #logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Ajusta a barra de pesquisa para o tamanho da tela */
+  .search {
+    width: 100%;
+  }
+
+  #pesquisa {
+    width: 80%;
+  }
+
+  /* Ajusta o menu de categorias para não quebrar a tela */
+  nav {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os links desçam de linha se faltar espaço */
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
