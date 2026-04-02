@@ -16,47 +16,549 @@ html {
 /* =========================================
    RESPONSIVIDADE - TELAS MENORES (CELULAR)
    ========================================= */
-@media (max-width: 768px) {
-  /* Remove a margem lateral gigante de 100px para telas pequenas */
+@media (max-width: 450px) {
   main,
   header,
   nav {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
   }
 
   header {
-    flex-direction: column; /* Empilha a logo, barra de busca e perfil */
-    height: auto;
-    padding-bottom: 15px;
-    gap: 15px;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 15px !important;
   }
 
-  .titulo {
-    font-size: 2rem;
-  }
-
-  #logo {
-    width: 50px;
-    height: 50px;
-  }
-
-  /* Ajusta a barra de pesquisa para o tamanho da tela */
-  .search {
+  header a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     width: 100%;
   }
 
-  #pesquisa {
-    width: 80%;
+  .about {
+    box-sizing: border-box;
+    margin: 10px;
   }
 
-  /* Ajusta o menu de categorias para não quebrar a tela */
-  nav {
+  #logo {
+    padding-left: 0 !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .titulo {
+    font-size: 1.8rem !important;
+    margin: 0 !important;
+  }
+
+  .pesquisa {
+    width: 87% !important;
+    max-width: 100% !important;
+    margin-bottom: 2rem;
+  }
+
+  #pesquisa {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /*CARDS*/
+
+  .popular,
+  .oldGames,
+  .oldApps {
     display: flex;
-    flex-wrap: wrap; /* Permite que os links desçam de linha se faltar espaço */
+    flex-flow: column wrap;
+    align-items: center;
+  }
+
+  .cards,
+  .cardsG,
+  .cardsA {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-left: -5px !important;
+    justify-content: center !important;
+    gap: 20px !important;
+  }
+
+  #card,
+  .card {
+    width: 100% !important;
+    max-width: 400px !important; /* Evita que fiquem gigantes em tablets pequenos */
+    min-height: 160px !important; /* Aumenta um pouco a altura */
+    padding: 20px !important;
+  }
+
+  /* (Opcional) Aumenta um pouco o texto do título do card no telemóvel */
+  .infos .title {
+    font-size: 1.4rem !important;
+  }
+
+  .moreG {
+    align-self: flex-end;
+  }
+
+  #botaoOG {
+    margin-right: -3rem;
+  }
+
+  /* =========================================
+     8. AJUSTE DA NAVBAR (MOBILE)
+     ========================================= */
+
+  /* Ajusta as margens da barra inferior para não colar nas bordas */
+  nav {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    position: fixed;
+  }
+
+  /* =========================================
+     MENU HAMBÚRGUER (MOBILE)
+     ========================================= */
+
+  /* 1. Mostra as 3 barras */
+  .menu-hamburguer {
+    display: flex !important;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
+    cursor: pointer;
+    padding-left: 10px;
+  }
+
+  .menu-hamburguer span {
+    font-size: 35px !important;
+    color: white;
+  }
+
+  /* 2. Transforma a lista de botões num menu flutuante escondido */
+  .secao ul {
+    display: none !important; /* Escondido por defeito */
+    flex-direction: column !important; /* Um botão por linha */
+    position: absolute !important;
+    bottom: 75px !important; /* Faz o menu abrir para cima da navbar */
+    left: 15px !important;
+    background-color: #010016 !important;
+    border: 1px solid #3e4a70 !important;
+    border-radius: 15px !important;
+    padding: 15px !important;
+    width: 220px !important;
+    gap: 15px !important;
+    box-shadow: 0px -5px 20px rgba(0, 0, 0, 0.7) !important;
+  }
+
+  /* A classe mágica que o JavaScript vai usar para mostrar o menu */
+  .secao ul.mostrar-menu {
+    display: flex !important;
+    z-index: 9999 !important; /* Garante que fica por cima de tudo na tela! */
+  }
+
+  /* 4. Estica os botões para ocuparem a largura do menu */
+  .secao ul li {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .secao ul li a {
+    justify-content: flex-start !important; /* Alinha o ícone e texto à esquerda */
+  }
+
+  /* Reduz ligeiramente o tamanho dos botões de navegação */
+  li {
+    padding: 8px 12px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* CORREÇÃO CRÍTICA: Remove as margens de 145px e -70px que partiam a tela */
+  .user-area {
+    margin-right: 0 !important;
+  }
+
+  #usuario {
+    margin-right: 0 !important;
+    width: 45px !important;
+    height: 45px !important;
+    margin-top: 0 !important; /* Alinha o botão ao centro da barra */
+  }
+
+  /* Reposiciona o menu pop-up do utilizador (Sair, Perfil, etc) para não vazar do ecrã */
+  #discovered {
+    position: absolute !important;
+    right: 10px !important;
+    margin-top: -160px !important;
+  }
+}
+
+/* =========================================
+   RESPONSIVIDADE - TELAS MEDIANAS (TABLETS)
+   =========================================  */
+
+@media (min-width: 450px) and (max-width: 900px) {
+  main,
+  header,
+  nav {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  header {
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 15px !important;
+  }
+
+  header a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  #about {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about {
+    box-sizing: border-box;
+  }
+
+  #logo {
+    padding-left: 0 !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .titulo {
+    font-size: 1.8rem !important;
+    margin: 0 !important;
+  }
+
+  .pesquisa {
+    width: 87% !important;
+    max-width: 100% !important;
+    margin-bottom: 2rem;
+  }
+
+  #pesquisa {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /*CARDS*/
+
+  .popular,
+  .oldGames,
+  .oldApps {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    width: 100%;
+  }
+
+  .cards,
+  .cardsG,
+  .cardsA {
+    display: grid !important;
+
+    grid-template-columns: repeat(3, 1fr) !important;
+
+    gap: 25px !important;
+    padding: 10px;
+    margin-left: 0 !important;
+    justify-content: center !important;
+  }
+
+  #card,
+  .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .infos .title {
+    font-size: 1.4rem !important;
+  }
+
+  .moreG {
+    align-self: flex-end;
+  }
+
+  #botaoOG {
+    margin-right: -3rem;
+  }
+
+  /* =========================================
+     8. AJUSTE DA NAVBAR (MOBILE)
+     ========================================= */
+
+  /* Ajusta as margens da barra inferior para não colar nas bordas */
+  nav {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    position: fixed;
+  }
+
+  /* =========================================
+     MENU HAMBÚRGUER (MOBILE)
+     ========================================= */
+
+  /* 1. Mostra as 3 barras */
+  .menu-hamburguer {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-left: 10px;
+  }
+
+  .menu-hamburguer span {
+    font-size: 35px !important;
+    color: white;
+  }
+
+  /* 2. Transforma a lista de botões num menu flutuante escondido */
+  .secao ul {
+    display: none !important; /* Escondido por defeito */
+    flex-direction: column !important; /* Um botão por linha */
+    position: absolute !important;
+    bottom: 75px !important; /* Faz o menu abrir para cima da navbar */
+    left: 15px !important;
+    background-color: #010016 !important;
+    border: 1px solid #3e4a70 !important;
+    border-radius: 15px !important;
+    padding: 15px !important;
+    width: 220px !important;
+    gap: 15px !important;
+    box-shadow: 0px -5px 20px rgba(0, 0, 0, 0.7) !important;
+  }
+
+  /* A classe mágica que o JavaScript vai usar para mostrar o menu */
+  .secao ul.mostrar-menu {
+    display: flex !important;
+    z-index: 9999 !important; /* Garante que fica por cima de tudo na tela! */
+  }
+
+  /* 4. Estica os botões para ocuparem a largura do menu */
+  .secao ul li {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .secao ul li a {
+    justify-content: flex-start !important; /* Alinha o ícone e texto à esquerda */
+  }
+
+  /* Reduz ligeiramente o tamanho dos botões de navegação */
+  li {
+    padding: 8px 12px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* CORREÇÃO CRÍTICA: Remove as margens de 145px e -70px que partiam a tela */
+  .user-area {
+    margin-right: 0 !important;
+  }
+
+  #usuario {
+    margin-right: 0 !important;
+    width: 45px !important;
+    height: 45px !important;
+    margin-top: 0 !important; /* Alinha o botão ao centro da barra */
+  }
+
+  /* Reposiciona o menu pop-up do utilizador (Sair, Perfil, etc) para não vazar do ecrã */
+  #discovered {
+    position: absolute !important;
+    right: 10px !important;
+    margin-top: -160px !important;
+  }
+}
+
+/* =========================================
+   RESPONSIVIDADE - TELAS MEDIANAS/MAIORES (TABLETS / HUBs)
+   =========================================  */
+
+@media (min-width: 900px) and (max-width: 1200px) {
+  main,
+  header,
+  nav {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  header {
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 15px !important;
+  }
+
+  header a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  #about {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about {
+    box-sizing: border-box;
+    margin: 10px;
+  }
+
+  #logo {
+    padding-left: 0 !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .titulo {
+    font-size: 1.8rem !important;
+    margin: 0 !important;
+  }
+
+  .pesquisa {
+    width: 87% !important;
+    max-width: 100% !important;
+    margin-bottom: 2rem;
+  }
+
+  #pesquisa {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /*CARDS*/
+
+  .popular,
+  .oldGames,
+  .oldApps {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    width: 100%;
+  }
+
+  .cards,
+  .cardsG,
+  .cardsA {
+    display: grid !important;
+
+    grid-template-columns: repeat(4, 1fr) !important;
+
+    gap: 30px !important;
+    margin-left: 0 !important;
+    justify-content: center !important;
+  }
+
+  #card,
+  .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .infos .title {
+    font-size: 1.4rem !important;
+  }
+
+  .moreG {
+    align-self: flex-end;
+  }
+
+  #botaoOG {
+    margin-right: -3rem;
+  }
+
+  /* =========================================
+     8. AJUSTE DA NAVBAR (MOBILE)
+     ========================================= */
+
+  /* Ajusta as margens da barra inferior para não colar nas bordas */
+  nav {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    position: fixed;
+  }
+
+  /* =========================================
+     MENU HAMBÚRGUER (MOBILE)
+     ========================================= */
+
+  /* 1. Mostra as 3 barras */
+  .menu-hamburguer {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-left: 10px;
+  }
+
+  .menu-hamburguer span {
+    font-size: 35px !important;
+    color: white;
+  }
+
+  /* 2. Transforma a lista de botões num menu flutuante escondido */
+  .secao ul {
+    display: none !important; /* Escondido por defeito */
+    flex-direction: column !important; /* Um botão por linha */
+    position: absolute !important;
+    bottom: 75px !important; /* Faz o menu abrir para cima da navbar */
+    left: 15px !important;
+    background-color: #010016 !important;
+    border: 1px solid #3e4a70 !important;
+    border-radius: 15px !important;
+    padding: 15px !important;
+    width: 220px !important;
+    gap: 15px !important;
+    box-shadow: 0px -5px 20px rgba(0, 0, 0, 0.7) !important;
+  }
+
+  /* A classe mágica que o JavaScript vai usar para mostrar o menu */
+  .secao ul.mostrar-menu {
+    display: flex !important;
+    z-index: 9999 !important; /* Garante que fica por cima de tudo na tela! */
+  }
+
+  /* 4. Estica os botões para ocuparem a largura do menu */
+  .secao ul li {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .secao ul li a {
+    justify-content: flex-start !important; /* Alinha o ícone e texto à esquerda */
+  }
+
+  /* Reduz ligeiramente o tamanho dos botões de navegação */
+  li {
+    padding: 8px 12px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* CORREÇÃO CRÍTICA: Remove as margens de 145px e -70px que partiam a tela */
+  .user-area {
+    margin-right: 0 !important;
+  }
+
+  #usuario {
+    margin-right: 0 !important;
+    width: 45px !important;
+    height: 45px !important;
+    margin-top: 0 !important; /* Alinha o botão ao centro da barra */
+  }
+
+  /* Reposiciona o menu pop-up do utilizador (Sair, Perfil, etc) para não vazar do ecrã */
+  #discovered {
+    position: absolute !important;
+    right: 10px !important;
+    margin-top: -160px !important;
   }
 }
 
@@ -484,6 +986,10 @@ li:hover a {
 
 .login:hover {
   transform: scale(1.1);
+}
+
+.menu-hamburguer {
+  display: none;
 }
 
 /* ==========================================================================

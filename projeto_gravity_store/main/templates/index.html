@@ -68,7 +68,7 @@
 
     <main>
       <!-- Sobre a Gravity Store -->
-      <section>
+      <section id="about">
         <div class="about">
           <h2>Propósito da Gravity Store?</h2>
           <p>
@@ -354,8 +354,13 @@
 
     <nav>
       <!-- Barra de navegação -->
+      <!-- Menu Responsivo -->
+      <div class="menu-hamburguer" id="btn-hamburguer">
+        <span class="material-symbols-outlined"> menu </span>
+      </div>
+
       <div class="secao">
-        <ul>
+        <ul id="lista-menu">
           <li>
             <a href="{{ url_for('main.home') }}" class="all">
               <span class="material-symbols-outlined"> all_inclusive </span>
