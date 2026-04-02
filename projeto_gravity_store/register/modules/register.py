@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, redirect, url_for
 from hashlib import sha256
-from instance.conection import get_db_connection # Importa a nova conexão
+from instance.conection import get_db_connection
 
 register_bp = Blueprint('register', __name__, 
                         template_folder='../templates', 
@@ -19,6 +19,10 @@ def submit():
     email = request.form['email']
     senha = request.form['senha']
     senha_confirmacao = request.form['senha_confirmacao']
+    
+    # ======== ADICIONADO: CAPTURA DO CHECKBOX ========
+    is_dev = 1 if request.form.get('is_dev') else 0
+    # =================================================
 
     if senha != senha_confirmacao:
         return render_template('register.html', erro="As senhas não são iguais!!!")
@@ -32,8 +36,10 @@ def submit():
         conexao = get_db_connection()
         cursor = conexao.cursor()
         
-        sql = "INSERT INTO people (nome, username, phone, email, senha) VALUES (%s, %s, %s, %s, %s)"
-        cursor.execute(sql, (nome, username, phone, email, armazenar_senha))
+        
+        sql = "INSERT INTO people (nome, username, phone, email, senha, is_dev) VALUES (%s, %s, %s, %s, %s, %s)"
+        cursor.execute(sql, (nome, username, phone, email, armazenar_senha, is_dev))
+        
         conexao.commit()
         
         return render_template("login.html")

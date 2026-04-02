@@ -440,17 +440,13 @@
 
       <!-- DEV AREA -->
 
-      {% if admin_status == 1 %}
+      {% if session.get('is_dev') == 1 %}
 
       <a href="{{ url_for('dev.dev') }}" class="login">
         <span class="material-symbols-outlined" id="dev">
           developer_mode_tv
         </span>
       </a>
-
-      {% else %}
-
-      <a href=""></a>
 
       {% endif %}
 

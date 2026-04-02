@@ -46,10 +46,9 @@
 
     <main>
       {% if erro %}
-        <p id="erro">{{ erro }}</p>
-        {% endif %}
+      <p id="erro">{{ erro }}</p>
+      {% endif %}
       <section class="cadastro">
-        
         <form action="/submit" method="post" class="formlogin">
           <div class="formR">
             <label class="email">Digite seu nome completo: </label>
@@ -123,8 +122,37 @@
               placeholder="Confirme sua senha"
             />
 
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                margin: 10px 0;
+                gap: 8px;
+              "
+            >
+              <input
+                type="checkbox"
+                name="is_dev"
+                id="is_dev"
+                value="1"
+                style="
+                  width: auto;
+                  margin: 0;
+                  box-shadow: none;
+                  cursor: pointer;
+                "
+              />
+              <label
+                for="is_dev"
+                class="senha"
+                style="margin: 0; cursor: pointer; display: inline"
+                >Sou um Desenvolvedor</label
+              >
+            </div>
             <div class="botoes">
-              <a href="{{ url_for('login.login') }}" id="loginPage">Já tenho conta</a>
+              <a href="{{ url_for('login.login') }}" id="loginPage"
+                >Já tenho conta</a
+              >
               <button type="submit" id="entra">Cadastrar</button>
             </div>
           </div>

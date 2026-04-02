@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, session, redirect, url_for
 from hashlib import sha256
-from instance.conection import get_db_connection # Importa a nova conexão
+from instance.conection import get_db_connection
 
 login_bp = Blueprint('login', __name__, 
                      template_folder='../templates', 
@@ -30,7 +30,6 @@ def login_auth():
         conexao = get_db_connection()
         cursor = conexao.cursor()
 
-        # MySQL usa %s como placeholder
         sql = "SELECT * FROM people WHERE email = %s AND senha = %s"
         cursor.execute(sql, (email_digitado, senha_criptografada))
 
@@ -38,7 +37,12 @@ def login_auth():
         
         if usuario:
             session['usuario_logado'] = usuario[0] 
-            session['nome_usuario'] = usuario[1]   
+            session['nome_usuario'] = usuario[1]
+            
+            # ======== ADICIONADO: SALVA O STATUS DE DEV ========
+            session['is_dev'] = usuario[6]
+            # ===================================================
+
             return redirect(url_for('main.home')) 
         else:
             return render_template('login.html', erro="E-mail ou senha incorretos!")
