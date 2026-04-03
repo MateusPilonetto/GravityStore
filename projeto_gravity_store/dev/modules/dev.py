@@ -21,15 +21,27 @@ def dev():
 # 1. Adicionado methods=['POST']
 @dev_bp.route("/submit", methods=['POST'])
 def apps():
-    # 2. Pegando os textos via request.form
-    nome = request.form['nome']
-    dev_name = request.form['devName'] # Corrigido para maiúsculo como no HTML
-    link_github  = request.form['linkG']
-    link_download  = request.form['linkA']
-    description  = request.form['description']
-    category  = request.form['category']
-    version  = request.form['version']
-    size_mb  = request.form['size']
+    # 1. RASTREADOR: Imprime no terminal o que está chegando
+    print("===== DADOS RECEBIDOS DO FORMULÁRIO =====")
+    print("Textos (Form):", request.form)
+    print("Arquivos (Files):", request.files)
+    print("=========================================")
+
+    # 2. Captura super segura (Se não vier nada, ele salva como string vazia ou None)
+    nome = request.form.get('nome', '')
+    dev_name = request.form.get('devName', '') 
+    link_github  = request.form.get('linkG', '')
+    link_download  = request.form.get('linkA', '')
+    description  = request.form.get('description', '')
+    category  = request.form.get('category', '')
+    version  = request.form.get('version', '')
+    size_mb  = request.form.get('size', 0)
+
+    # Verifica se algum campo essencial está vazio
+    if not nome or not dev_name:
+        return "Erro: O nome do app ou o nome do dev estão faltando!", 400
+
+    # Continua o código dos arquivos que te passei antes...
     
     # 3 e 4. Pegando e salvando os arquivos (imagens) via request.files
     icon_app = request.files['iconApp']
