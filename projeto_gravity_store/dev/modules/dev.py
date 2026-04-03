@@ -12,7 +12,7 @@ dev_bp = Blueprint('dev', __name__,
 def dev():
     return render_template("dev.html")
 
-@dev_bp.route("/submitApps")
+@dev_bp.route("/submit")
 def apps():
     nome = request.form['nome']
     devName = request.form['devname']
