@@ -184,11 +184,12 @@ html {
     margin-top: 0 !important; /* Alinha o botão ao centro da barra */
   }
 
-  /* Reposiciona o menu pop-up do utilizador (Sair, Perfil, etc) para não vazar do ecrã */
+  
   #discovered {
     position: absolute !important;
-    right: 10px !important;
-    margin-top: -160px !important;
+    right: 15px !important;
+    bottom: 80px !important; 
+    margin-top: 0 !important;
   }
 }
 
@@ -369,11 +370,11 @@ html {
     margin-top: 0 !important; /* Alinha o botão ao centro da barra */
   }
 
-  /* Reposiciona o menu pop-up do utilizador (Sair, Perfil, etc) para não vazar do ecrã */
   #discovered {
     position: absolute !important;
-    right: 10px !important;
-    margin-top: -160px !important;
+    right: 15px !important;
+    bottom: 80px !important; /* Mantém ele flutuando acima da navbar no celular */
+    margin-top: 0 !important;
   }
 }
 
@@ -554,11 +555,12 @@ html {
     margin-top: 0 !important; /* Alinha o botão ao centro da barra */
   }
 
-  /* Reposiciona o menu pop-up do utilizador (Sair, Perfil, etc) para não vazar do ecrã */
+  
   #discovered {
     position: absolute !important;
-    right: 10px !important;
-    margin-top: -160px !important;
+    right: 15px !important;
+    bottom: 80px !important;
+    margin-top: 0 !important;
   }
 }
 
@@ -1023,9 +1025,10 @@ li:hover a {
 }
 
 #discovered {
+  position: absolute;
+  right: 20px;
+  bottom: 80px;
   padding: 20px;
-  margin-top: -150px;
-  margin-bottom: 10px;
   background: linear-gradient(145deg, #000740, #004e92);
   border-radius: 15px;
   display: none;
