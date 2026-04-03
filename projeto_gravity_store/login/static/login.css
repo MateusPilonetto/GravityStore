@@ -2,6 +2,16 @@
    RESPONSIVIDADE - TELAS MENORES (CELULAR)
    ========================================= */
 @media (max-width: 768px) {
+  .formlogin {
+    width: 80% !important;
+    height: 380px !important;
+  }
+
+  .cadastro {
+    padding: 20px !important;
+    padding-bottom: 0 !important;
+  }
+
   /* Ajusta o título */
   .titulo {
     font-size: 2rem;
@@ -12,10 +22,14 @@
     height: 50px;
   }
 
-  /* Ajusta a caixa de login para caber na tela */
+  #entra,
+  #registro {
+    width: 125px !important;
+  }
+
   .entrar {
-    width: 90%; /* Ocupa 90% da tela e não os 400px fixos */
-    margin: 20px auto; /* Centraliza a caixa */
+    width: 80%;
+    margin: 20px auto;
     padding-top: 5vh;
   }
 
@@ -32,12 +46,28 @@
     max-width: 300px;
   }
 
-  /* Centraliza a div do 'Lembrar de mim' e esqueceu a senha */
   .remember {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 10px;
+    font-size: 14px;
+  }
+
+  #icon {
+    position: absolute;
+    right: 48px;
+    top: 18% !important;
+    transform: translateY(50%);
+    color: white;
+  }
+
+  #iconS {
+    position: absolute;
+    right: 69px;
+    top: 42% !important;
+    transform: translateY(50%);
+    color: white;
   }
 }
 

@@ -3,48 +3,6 @@
   src: url(PlushTitulo.otf) format(truetype);
 }
 
-/* =========================================
-   RESPONSIVIDADE - TELAS MENORES (CELULAR)
-   ========================================= */
-@media (max-width: 768px) {
-  .titulo {
-    font-size: 2rem;
-  }
-
-  #logo {
-    width: 50px;
-    height: 50px;
-  }
-
-  /* Faz a caixa principal usar a porcentagem da tela */
-  .entrar {
-    width: 90%;
-    margin: 20px auto;
-    padding-top: 5vh;
-  }
-
-  .inputs {
-    align-items: center;
-  }
-
-  /* Ajuste de todos os inputs do registro e do botão de confirmar */
-  #email,
-  #senha,
-  #senha_confirmacao,
-  #username,
-  #entra {
-    width: 100%;
-    max-width: 300px; /* Evita que fiquem espremidos */
-  }
-
-  .remember {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-}
-
 html {
   font-family: "SN Pro", sans-serif;
 }
@@ -490,4 +448,110 @@ input[type="checkbox"] {
   background-color: #4caf50;
   /* Verde */
   border: 1px solid #388e3c;
+}
+
+/* =========================================
+   RESPONSIVIDADE - TELAS MENORES (CELULAR)
+   ========================================= */
+
+@media (max-width: 768px) {
+  .titulo {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  #logo {
+    width: 50px;
+    height: 50px;
+    padding-left: 0;
+  }
+
+  header {
+    margin-right: 0;
+    justify-content: center;
+  }
+
+  /* RESOLVE O "GRUDADO NA TELA" */
+  .cadastro {
+    width: 85%; /* Deixa uma margem de respiro nas laterais da tela */
+    max-width: 380px;
+    padding: 30px 20px; /* Dá espaço interno para os itens não tocarem na borda da caixa azul */
+    margin: 40px auto; /* Centraliza a caixa e afasta do topo/fundo */
+    box-sizing: border-box; /* Essencial: impede que o padding faça a caixa vazar da tela */
+    height: auto;
+  }
+
+  .formlogin {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .formR,
+  .formS {
+    width: 100%;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  #nome,
+  #user,
+  #phone,
+  #email,
+  #senha,
+  #senha_confirmacao {
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+  }
+
+  /* BOTÕES MENORES NO CELULAR */
+  .botoes {
+    margin-left: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center !important;
+    gap: 10px;
+    width: 100%;
+  }
+
+  #entra,
+  #loginPage {
+    width: 70%;
+    max-width: 200px;
+    font-size: 1.1rem;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  #loginPage:hover,
+  #entra:hover {
+    font-size: 1.15rem; /* Ajusta o efeito hover para não crescerem de forma exagerada */
+  }
+
+  #icon,
+  #iconS,
+  #iconSN,
+  #iconN,
+  #circle,
+  #phoneIcon {
+    display: none;
+  }
+
+  #explain {
+    margin-left: 0;
+    text-align: center;
+    line-height: 1.4;
+  }
 }
