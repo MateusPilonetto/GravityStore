@@ -1,7 +1,7 @@
 import os
 import json
 from flask import Blueprint, request, render_template, redirect, url_for, session
-# werkzeug é uma biblioteca que já vem embutida com o Flask para lidar com arquivos
+
 from werkzeug.utils import secure_filename 
 from database.conection import get_db_connection
 
@@ -22,17 +22,17 @@ def dev():
 @dev_bp.route("/submit", methods=['POST'])
 def apps():
     # 2. Pegando os textos via request.form
-    nome = request.form.get('nome')
-    dev_name = request.form.get('devName') # Corrigido para maiúsculo como no HTML
-    link_github  = request.form.get('linkG')
-    link_download  = request.form.get('linkA')
-    description  = request.form.get('description')
-    category  = request.form.get('category')
-    version  = request.form.get('version')
-    size_mb  = request.form.get('size')
+    nome = request.form['nome']
+    dev_name = request.form['devName'] # Corrigido para maiúsculo como no HTML
+    link_github  = request.form['linkG']
+    link_download  = request.form['linkA']
+    description  = request.form['description']
+    category  = request.form['category']
+    version  = request.form['version']
+    size_mb  = request.form['size']
     
     # 3 e 4. Pegando e salvando os arquivos (imagens) via request.files
-    icon_app = request.files.get('iconApp')
+    icon_app = request.files['iconApp']
     icon_filename = ""
     
     if icon_app and icon_app.filename != '':
