@@ -26,8 +26,7 @@ def dev():
         conexao = get_db_connection()
         cursor = conexao.cursor()
         
-        # O SQL volta a ter apenas 5 valores. O banco colocará o is_dev como 0 automaticamente!
-        sql = "INSERT INTO people (nome, devName, linkG, linkA, description, category, version, size, iconApp, screenshots) VALUES (%s, %s, %s, %s, %s)"
+        sql = "INSERT INTO apps (nome, devName, linkG, linkA, description, category, version, size, iconApp, screenshots) VALUES (%s, %s, %s, %s, %s)"
         cursor.execute(sql, (nome, devName, linkG, linkA, description, category, version, size, iconApp, screenshots))
         
         conexao.commit()
