@@ -10,7 +10,10 @@ dev_bp = Blueprint('dev', __name__,
 
 @dev_bp.route("/dev")
 def dev():
+    return render_template("dev.html")
 
+@dev_bp.route("/submitApps")
+def apps():
     nome = request.form['nome']
     devName = request.form['devname']
     linkG  = request.form['linkG']
