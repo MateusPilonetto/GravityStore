@@ -3,92 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link
-      rel="stylesheet"
-      href="{{ url_for('login.static', filename='login.css') }}"
-    />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-
-    <link
-      rel="icon"
-      type="image/png"
-      href="{{ url_for('login.static', filename='Gwhite.svg') }}"
-    />
-
     <title>Gravity Store - Entrar</title>
+    
+    <link rel="stylesheet" href="{{ url_for('login.static', filename='login.css') }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="{{ url_for('login.static', filename='Gwhite.svg') }}" />
   </head>
   <body>
     <header>
-      <a
-        href="{{ url_for('main.home') }}"
-        style="
-          text-decoration: none;
-          color: inherit;
-          display: flex;
-          align-items: center;
-        "
-      >
-        <img
-          src="{{ url_for('login.static', filename='Gwhite.svg') }}"
-          alt="Logotipo da Gravity Store"
-          id="logo"
-        />
+      <a href="{{ url_for('main.home') }}" class="logo-link">
+        <img src="{{ url_for('login.static', filename='Gwhite.svg') }}" alt="Logotipo da Gravity Store" id="logo" />
         <h1 class="titulo">Gravity Store</h1>
       </a>
     </header>
 
     <main>
       {% if erro %}
-      <p id="erro">{{ erro }}</p>
+      <div class="alerta erro">{{ erro }}</div>
       {% endif %}
-      <section class="cadastro">
-        <form action="/login_auth" method="post" class="formlogin">
-          <label class="email">Digite seu E-mail: </label>
-          <span class="material-symbols-outlined" id="icon">
-            alternate_email
-          </span>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="exemplo@email.com"
-          />
+      
+      <section class="auth-card">
+        <h2>Entrar</h2>
+        <form action="/login_auth" method="post" class="auth-form">
+          
+          <div class="input-group">
+            <label for="email">E-mail</label>
+            <div class="input-wrapper">
+              <span class="material-symbols-outlined">alternate_email</span>
+              <input type="email" name="email" id="email" placeholder="exemplo@email.com" required />
+            </div>
+          </div>
 
-          <label class="senha">Digite sua senha: </label>
-          <span class="material-symbols-outlined" id="iconS"> password </span>
-          <input
-            type="password"
-            name="senha"
-            id="senha"
-            placeholder="Digite sua senha"
-          />
+          <div class="input-group">
+            <label for="senha">Senha</label>
+            <div class="input-wrapper">
+              <span class="material-symbols-outlined">password</span>
+              <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required />
+            </div>
+          </div>
 
-          <div class="lembrar">
+          <div class="options-group">
             <label class="remember">
               <input type="checkbox" name="remember" id="remember" />
               Lembrar de mim
             </label>
-            <a href="#" id="forgot">Esqueceu a senha?</a>
+            <a href="#" class="forgot-link">Esqueceu a senha?</a>
           </div>
 
-          <div class="botoes">
-            <button type="submit" id="entra">Entrar</button>
-
-            <a href="{{ url_for('register.register') }}" id="registro">
-              Cadastrar
-            </a>
+          <div class="btn-group">
+            <button type="submit" class="btn-primary" id="entra">Entrar</button>
+            <a href="{{ url_for('register.register') }}" class="btn-secondary" id="registro">Cadastrar</a>
           </div>
+
         </form>
       </section>
     </main>

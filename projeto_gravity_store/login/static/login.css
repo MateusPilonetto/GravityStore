@@ -1,116 +1,20 @@
-/* =========================================
-   RESPONSIVIDADE - TELAS MENORES (CELULAR)
-   ========================================= */
-@media (max-width: 768px) {
-  .formlogin {
-    width: 80% !important;
-    height: 380px !important;
-  }
-
-  .cadastro {
-    padding: 20px !important;
-    padding-bottom: 0 !important;
-  }
-
-  /* Ajusta o título */
-  .titulo {
-    font-size: 2rem;
-  }
-
-  #logo {
-    width: 50px;
-    height: 50px;
-  }
-
-  #entra,
-  #registro {
-    width: 125px !important;
-  }
-
-  .entrar {
-    width: 80%;
-    margin: 20px auto;
-    padding-top: 5vh;
-  }
-
-  /* Ajusta o formulário e inputs */
-  .inputs {
-    align-items: center;
-  }
-
-  /* Inputs de email, senha e botão menores para caber no mobile */
-  #email,
-  #senha,
-  #entra {
-    width: 100%; /* Faz o input pegar a largura total da div .entrar */
-    max-width: 300px;
-  }
-
-  .remember {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-  }
-
-  #icon {
-    position: absolute;
-    right: 48px;
-    top: 18% !important;
-    transform: translateY(50%);
-    color: white;
-  }
-
-  #iconS {
-    position: absolute;
-    right: 69px;
-    top: 42% !important;
-    transform: translateY(50%);
-    color: white;
-  }
-}
-
-html {
-  font-family: "SN Pro", sans-serif;
-}
-
 @font-face {
   font-family: Plush;
   src: url(PlushTitulo.otf) format(truetype);
 }
 
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-right: 31px;
-  margin-top: 5px;
-  gap: 10px;
-  border: none;
-  height: 80px;
-  padding-top: 10px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.titulo {
-  font-family: Plush;
-  color: white;
-  text-decoration: none;
-  font-size: 2.5rem;
-  left: 50%;
-}
-
-#logo {
-  width: 65px;
-  height: 65px;
-  padding-left: 20px;
+html {
+  font-family: "SN Pro", "Google Sans", sans-serif !important;
   color: white;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   background: #030030;
   background: linear-gradient(
     46deg,
@@ -118,25 +22,24 @@ body {
     rgb(0, 0, 12) 35%,
     rgba(0, 0, 0, 1) 100%
   );
-  min-height: 50vh;
-  background-repeat: no-repeat;
+  min-height: 100vh;
   background-attachment: fixed;
-  padding-bottom: 80px;
-  /* Espaço para o conteúdo não ficar atrás da nav */
+  padding-bottom: 50px;
 }
 
-body::before {
+/* Fundo Estrelado */
+body::before,
+body::after {
   content: " ";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 1px;
-  height: 1px;
   background: transparent;
   z-index: -2;
-  /* Garante que fique atrás de tudo */
-
-  /* O TRUQUE: Uma lista gigante de sombras brancas em posições aleatórias (vw = largura da tela, vh = altura) */
+}
+body::before {
+  width: 1px;
+  height: 1px;
   box-shadow:
     10vw 15vh #fff,
     30vw 45vh #fff,
@@ -157,36 +60,13 @@ body::before {
     66vw 55vh #fff,
     22vw 92vh #fff,
     77vw 41vh #fff,
-    91vw 8vh #fff,
-    4vw 61vh rgba(255, 255, 255, 0.7),
-    52vw 12vh rgba(255, 255, 255, 0.7),
-    28vw 22vh rgba(255, 255, 255, 0.7),
-    64vw 78vh rgba(255, 255, 255, 0.7),
-    98vw 59vh rgba(255, 255, 255, 0.7),
-    18vw 47vh rgba(255, 255, 255, 0.7),
-    74vw 91vh rgba(255, 255, 255, 0.7),
-    33vw 5vh rgba(255, 255, 255, 0.7),
-    88vw 68vh rgba(255, 255, 255, 0.7),
-    44vw 36vh rgba(255, 255, 255, 0.7);
-  /* Você pode adicionar mais linhas se quiser mais estrelas! */
+    91vw 8vh #fff;
 }
-
-/* --- CAMADA 2: Estrelas Médias e mais próximas (opcional, para profundidade) --- */
 body::after {
-  content: " ";
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 2px;
-  /* Um pouco maiores */
   height: 2px;
-  background: transparent;
-  z-index: -1;
-  /* Atrás do formulário, mas na frente das estrelas pequenas */
   opacity: 0.8;
-  /* Um pouco mais brilhantes */
-
-  /* Menos estrelas nesta camada */
+  z-index: -1;
   box-shadow:
     20vw 30vh #fff,
     60vw 70vh #fff,
@@ -199,232 +79,202 @@ body::after {
     75vw 50vh #fff,
     15vw 45vh rgba(255, 255, 255, 0.9),
     55vw 85vh rgba(255, 255, 255, 0.9),
-    95vw 15vh rgba(255, 255, 255, 0.9),
-    35vw 75vh rgba(255, 255, 255, 0.9),
-    85vw 65vh rgba(255, 255, 255, 0.9),
-    45vw 25vh rgba(255, 255, 255, 0.9),
-    65vw 35vh rgba(255, 255, 255, 0.9),
-    25vw 95vh rgba(255, 255, 255, 0.9),
-    5vw 55vh rgba(255, 255, 255, 0.9),
-    70vw 5vh rgba(255, 255, 255, 0.9);
+    95vw 15vh rgba(255, 255, 255, 0.9);
 }
 
+/* Header */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+#logo {
+  width: 60px;
+  height: 60px;
+}
+.titulo {
+  font-family: Plush, sans-serif;
+  color: white;
+  font-size: 2.5rem;
+}
+
+/* Main & Card */
 main {
   display: flex;
   flex-direction: column;
-  min-width: 90vw;
-  min-height: 80vh;
   justify-content: center;
   align-items: center;
+  padding: 0 20px;
+  min-height: 70vh;
 }
 
-#erro {
-  color: red;
-  font-weight: bold;
+.auth-card {
+  background: rgba(0, 5, 25, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  border-radius: 1.5rem;
+  padding: 40px;
+  width: 100%;
+  max-width: 450px; /* Mais estreito para o Login */
 }
 
-label {
-  color: white;
+.auth-card h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #9ad0ff;
+  font-weight: 500;
 }
 
-.cadastro {
-  background: linear-gradient(145deg, #000215, #00172b);
-  border-radius: 2rem;
-  padding: 30px;
-  position: relative;
-  display: inline-block;
+/* Inputs com Ícones Embutidos */
+.input-group {
+  margin-bottom: 20px;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #b0b8d1;
 }
 
-#icon {
-  position: absolute;
-  right: 48px;
-  top: 19%;
-  transform: translateY(50%);
-  color: white;
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: rgba(30, 34, 53, 0.7);
+  border: 1px solid #3b476b;
+  border-radius: 12px;
+  padding: 0 15px;
+  transition: all 0.3s ease;
 }
 
-#iconS {
-  position: absolute;
-  right: 69px;
-  top: 48%;
-  transform: translateY(50%);
-  color: white;
+.input-wrapper:focus-within {
+  border-color: #9ad0ff;
+  background-color: rgba(30, 34, 53, 1);
+  box-shadow: 0 0 10px rgba(154, 208, 255, 0.2);
 }
 
-.lembrar {
+.input-wrapper .material-symbols-outlined {
+  color: #6b779a;
+  margin-right: 10px;
+  font-size: 20px;
+}
+.input-wrapper input {
+  flex: 1;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 12px 0;
+  color: #ffffff;
+  outline: none;
+  font-size: 1rem;
+}
+.input-wrapper input::placeholder {
+  color: #6b779a;
+}
+
+/* Opções Extras */
+.options-group {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 25px;
+  font-size: 0.9rem;
 }
-
-#forgot {
-  background-color: #3b476b;
-  text-decoration: none;
-  padding: 5px;
-  margin-right: 8px;
-  border-radius: 8px;
-  color: white;
-}
-
-#forgot:hover {
-  background-color: #9ad0ff;
-  /* Efeito visual ao passar o mouse */
-  transform: scale(1.1);
-  color: #1e2235;
-  font-family: "SN Pro", sans-serif;
-}
-
-.formlogin {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 20px;
-  width: 330px;
-  justify-content: center;
-}
-
-#email {
-  width: 320px;
-  height: 40px;
-  border-radius: 12px;
-  border: none;
-  background-color: #3b476b;
-  color: #ffffff;
-  /* Cor do texto que você digita */
-  caret-color: white;
-  font-family: "Google Sans", sans-serif;
-  font-size: 16px;
-  /* Tamanho legível */
-}
-
-#email::placeholder {
-  font-family: "Google Sans", sans-serif;
-  font-size: 1rem;
-  padding: 8px;
-}
-
-.email {
-  font-size: 1.3rem;
-}
-
-#senha {
-  width: 320px;
-  height: 40px;
-  border-radius: 12px;
-  border: none;
-  background-color: #3b476b;
-  color: #ffffff;
-  /* Cor do texto que você digita */
-  caret-color: white;
-  font-family: "Google Sans", sans-serif;
-  font-size: 16px;
-  /* Tamanho legível */
-}
-
-#senha::placeholder {
-  font-family: "Google Sans", sans-serif;
-  font-size: 1rem;
-  padding: 8px;
-}
-
-.senha {
-  font-size: 1.3rem;
-}
-
-#remember {
-  align-self: flex-start;
-  top: 10px;
-  font-size: 15px;
-}
-
 .remember {
-  justify-self: center;
-}
-
-input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #b0b8d1;
   cursor: pointer;
 }
-
-#entra {
-  background-color: #3e4a70;
-  gap: 10px;
-  border-radius: 12px;
-  border: none;
-  color: #ffffff;
-  font-family: "Google Sans", sans-serif;
-  font-size: 1.45rem;
-  width: 152px;
-  height: 40px;
-  font-family: "SN Pro", sans-serif;
-  margin: 5px;
-  transition: 0.3s;
+.remember input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #9ad0ff;
 }
-
-#entra:hover {
-  background-color: #9ad0ff;
-  /* Efeito visual ao passar o mouse */
-  transform: scale(1.1);
-  color: #1e2235;
-  font-family: "SN Pro", sans-serif;
-  font-size: 1.47rem;
-}
-
-#registro {
-  background-color: #3e4a70;
-  border-radius: 12px;
-  border: none;
-  color: #ffffff;
-  font-family: "Google Sans", sans-serif;
-  font-size: 1.45rem;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-family: "SN Pro", sans-serif;
-  transition: 0.3s;
-  margin-left: 9px;
+.forgot-link {
+  color: #9ad0ff;
   text-decoration: none;
+  transition: 0.3s;
+}
+.forgot-link:hover {
+  text-decoration: underline;
+  color: white;
 }
 
-#registro:hover {
-  background-color: #9ad0ff;
-  /* Efeito visual ao passar o mouse */
-  transform: scale(1.1);
-  color: #1e2235;
+/* Botões */
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btn-primary,
+.btn-secondary {
+  border-radius: 12px;
+  border: none;
   font-family: "SN Pro", sans-serif;
-  font-size: 1.47rem;
-  padding-left: 26px;
-  padding-right: 26px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  border-radius: 14px;
+  font-size: 1.2rem;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Mensagens de Erro e Sucesso */
-.mensagens-sistema {
+.btn-primary {
+  background-color: #3e4a70;
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background-color: #9ad0ff;
+  color: #030030;
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #9ad0ff;
+  border: 1px solid #3e4a70;
+}
+.btn-secondary:hover {
+  background-color: rgba(62, 74, 112, 0.3);
+  border-color: #9ad0ff;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Alertas */
+.alerta {
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
   margin-bottom: 20px;
   width: 100%;
-  text-align: center;
-}
-
-.alerta {
-  padding: 10px;
-  border-radius: 5px;
+  max-width: 450px;
   font-weight: bold;
-  color: white;
-  margin-bottom: 10px;
 }
-
 .alerta.erro {
-  background-color: #ff4d4d;
-  /* Vermelho */
-  border: 1px solid #cc0000;
+  background: rgba(255, 77, 77, 0.2);
+  border: 1px solid #ff4d4d;
+  color: #ffb3b3;
 }
 
-.alerta.sucesso {
-  background-color: #4caf50;
-  /* Verde */
-  border: 1px solid #388e3c;
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 30px 20px;
+  }
+  .titulo {
+    font-size: 2rem;
+  }
 }

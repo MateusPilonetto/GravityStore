@@ -1,125 +1,87 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="{{url_for('dev.static', filename='dev.css')}}"
-    />
-    <!-- Icons -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-    <!--Logo da Gravity Store-->
-    <link
-      rel="icon"
-      type="image/png"
-      href="{{ url_for('main.static', filename='Gwhite.svg') }}"
-    />
-
-    <title>Developers</title>
+    <title>Gravity Store - Developers</title>
+    <link rel="stylesheet" href="{{ url_for('dev.static', filename='dev.css') }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="{{ url_for('main.static', filename='Gwhite.svg') }}" />
   </head>
   <body>
     <header>
-      <a
-        href="{{ url_for('main.home') }}"
-        style="
-          text-decoration: none;
-          color: inherit;
-          display: flex;
-          align-items: center;
-        "
-      >
-        <img
-          src="{{ url_for('dev.static', filename='Gwhite.svg') }}"
-          alt="Logotipo da Gravity Store"
-          id="logo"
-        />
+      <a href="{{ url_for('main.home') }}" class="logo-link">
+        <img src="{{ url_for('dev.static', filename='Gwhite.svg') }}" alt="Logotipo da Gravity Store" id="logo" />
         <h1 class="titulo">Gravity Store</h1>
       </a>
     </header>
+    
     <main>
       <section class="cadastro">
-        <form action="/submit" method="post" class="app">
-          <div class="formR">
-            <label class="appName">Qual o nome do app? </label>
-            <input type="text" name="nome" id="nome" placeholder="AppName" />
+        <h2>Cadastrar Novo App</h2>
+        
+        <form action="/submit" method="post" class="app-form" enctype="multipart/form-data">
+          
+          <div class="form-grid">
+            <div class="coluna">
+              <div class="input-group">
+                <label for="nome">Nome do app</label>
+                <input type="text" name="nome" id="nome" placeholder="Ex: Gravity Browser" required />
+              </div>
 
-            <label class="devName">Quem é o dev? </label>
-            <input
-              type="text"
-              name="devName"
-              id="devName"
-              placeholder="joao.25"
-            />
+              <div class="input-group">
+                <label for="devName">Nome do Dev</label>
+                <input type="text" name="devName" id="devName" placeholder="Ex: joao.25" required />
+              </div>
 
-            <label class="linkG">Qual o link do GitHub do Dev? </label>
-            <input
-              type="text"
-              name="linkG"
-              id="linkG"
-              placeholder="github.com/joao123"
-            />
-            <label class="linkG">Qual o link de download do app? </label>
-            <input
-              type="text"
-              name="linkA"
-              id="linkA"
-              placeholder="github.com/app.download"
-            />
-            <label class="iconApp">Digite uma descrição para o app? </label>
-            <textarea
-              name="description"
-              id="desc"
-              placeholder="Digite a descrição aqui"
-            ></textarea>
-          </div>
+              <div class="input-group">
+                <label for="linkG">Link do GitHub do Dev</label>
+                <input type="url" name="linkG" id="linkG" placeholder="https://github.com/joao123" required />
+              </div>
 
-          <div class="formS">
-            <label class="category">Qual a categoria do App: </label>
-            <input
-              type="text"
-              name="category"
-              id="category"
-              placeholder="Leia a documentação antes"
-            />
+              <div class="input-group">
+                <label for="linkA">Link de download do app</label>
+                <input type="url" name="linkA" id="linkA" placeholder="https://..." required />
+              </div>
 
-            <label class="version">Qual a versão do app? </label>
-            <input
-              type="number"
-              name="version"
-              id="version"
-              placeholder="Digite a versão do app"
-            />
+              <div class="input-group">
+                <label for="desc">Descrição do app</label>
+                <textarea name="description" id="desc" rows="4" placeholder="Descreva as funções do seu app..." required></textarea>
+              </div>
+            </div>
 
-            <label class="size">Qual o tamanho do app? </label>
-            <input
-              type="number"
-              name="size"
-              id="size"
-              placeholder="Digite o tamanho em MB"
-            />
-            <label class="iconApp">Qual o ícone do app? </label>
-            <input type="file" name="iconApp" id="iconApp" accept="image/*" />
+            <div class="coluna">
+              <div class="input-group">
+                <label for="category">Categoria</label>
+                <input type="text" name="category" id="category" placeholder="Ex: Ferramentas, Jogos..." required />
+              </div>
 
-            <label class="screenshots"
-              >Selecione algumas imagens do app:
-            </label>
-            <input
-              type="file"
-              name="screenshots"
-              id="screenshots"
-              accept="image/*"
-              multiple
-            />
+              <div class="input-group">
+                <label for="version">Versão do app</label>
+                <input type="text" name="version" id="version" placeholder="Ex: 1.0.0" required />
+              </div>
 
-            <div>
-              <button type="submit" id="botao">Enviar</button>
+              <div class="input-group">
+                <label for="size">Tamanho (MB)</label>
+                <input type="number" step="0.1" name="size" id="size" placeholder="Ex: 25.5" required />
+              </div>
+
+              <div class="input-group">
+                <label for="iconApp">Ícone do app</label>
+                <input type="file" name="iconApp" id="iconApp" accept="image/*" required />
+              </div>
+
+              <div class="input-group">
+                <label for="screenshots">Screenshots (Múltiplas)</label>
+                <input type="file" name="screenshots" id="screenshots" accept="image/*" multiple required />
+              </div>
             </div>
           </div>
+
+          <div class="btn-container">
+            <button type="submit" id="botao">Enviar Aplicativo</button>
+          </div>
+
         </form>
       </section>
     </main>
