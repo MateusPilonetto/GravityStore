@@ -184,11 +184,10 @@ html {
     margin-top: 0 !important; /* Alinha o botão ao centro da barra */
   }
 
-  
   #discovered {
     position: absolute !important;
     right: 15px !important;
-    bottom: 80px !important; 
+    bottom: 80px !important;
     margin-top: 0 !important;
   }
 }
@@ -555,7 +554,6 @@ html {
     margin-top: 0 !important; /* Alinha o botão ao centro da barra */
   }
 
-  
   #discovered {
     position: absolute !important;
     right: 15px !important;
@@ -788,7 +786,12 @@ main {
   margin-bottom: 30px;
 }
 
-/* O card individual - Transformado em classe (.card) e mais responsivo */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* O card individual */
 .card {
   display: flex;
   align-items: center;
@@ -799,42 +802,51 @@ main {
   padding: 15px;
   box-sizing: border-box;
   transition: 0.3s;
+  overflow: hidden; /* Impede que qualquer coisa passe das bordas */
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
+/* A caixa da imagem */
 .img {
-  min-width: 100px;
+  width: 100px;
   height: 100px;
-  background-color: #9ad0ff;
+  min-width: 100px; /* Trava a largura mínima */
+  background-color: #3b476b; /* Cor de fundo se a imagem falhar */
   border-radius: 15px;
   margin-right: 15px;
-  /* Espaço entre imagem e texto */
   overflow: hidden;
-  /* Corta bordas quadradas das imagens de dentro */
+  flex-shrink: 0; /* O SEGREDO: Impede o texto de "esmagar" a imagem */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Textos dentro do card */
+/* Área de Textos */
 .infos {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
+  width: calc(
+    100% - 115px
+  ); /* Garante que o texto respeite o espaço da imagem */
+  overflow: hidden;
 }
 
 .title {
   margin: 0 0 5px 0;
   font-size: 1.2rem;
-  padding-top: 1em;
+  padding-top: 5px;
+  white-space: nowrap; /* Não deixa o título quebrar de linha */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adiciona "..." se o título for muito longo */
 }
 
 .text {
   margin: 0 0 10px 0;
   font-size: 0.9rem;
   color: #aeb9d6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adiciona "..." se o nome do dev/categoria for longo */
 }
 
 .textH:hover {
