@@ -19,7 +19,7 @@ def dev():
     return render_template("dev.html")
 
 # 1. Adicionado methods=['POST']
-@dev_bp.route("/submit", methods=['POST'])
+@dev_bp.route("/submit_app", methods=['POST'])
 def apps():
     # 1. RASTREADOR: Imprime no terminal o que está chegando
     print("===== DADOS RECEBIDOS DO FORMULÁRIO =====")
