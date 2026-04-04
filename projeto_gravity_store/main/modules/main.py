@@ -28,7 +28,7 @@ def home():
                 userDev = resultado[0]
 
         # 2. NOVO: Vai buscar os últimos 10 aplicativos adicionados
-        comando_apps = "SELECT id, nome, dev_name, category, size_mb, icon_path FROM apps ORDER BY data_envio DESC LIMIT 10"
+        comando_apps = "SELECT id, nome, dev_name, category, size_mb, icon_path, link_download FROM apps ORDER BY data_envio DESC LIMIT 10"
         cursor.execute(comando_apps)
         
         # Converte o resultado para um formato de "Dicionário" (mais fácil para o HTML ler)
