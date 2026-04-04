@@ -94,24 +94,35 @@ def apps():
 
 @dev_bp.route("/app_list")
 def app_list():
+    pesquisa = request.args.get('q', '')
+
     try:
         conexao = get_db_connection()
         cursor = conexao.cursor()
 
-        # Vai buscar os últimos 10 aplicativos adicionados
-        comando_apps = "SELECT id, nome, dev_name, category, size_mb, icon_path, link_github, link_download FROM apps ORDER BY data_envio DESC LIMIT 10"
-        cursor.execute(comando_apps)
+        if pesquisa:
+            comando_apps = """
+                SELECT id, nome, dev_name, category, size_mb, icon_path, link_github, link_download 
+                FROM apps 
+                WHERE nome LIKE %s OR dev_name LIKE %s OR category LIKE %s
+                ORDER BY data_envio DESC
+            """
+            termo = f"%{pesquisa}%"
+            cursor.execute(comando_apps, (termo, termo, termo))
+        else:
+            comando_apps = "SELECT id, nome, dev_name, category, size_mb, icon_path, link_github, link_download FROM apps ORDER BY data_envio DESC LIMIT 10"
+            cursor.execute(comando_apps)
         
-        # Converte o resultado para um formato de "Dicionário"
+        
         colunas = [desc[0] for desc in cursor.description]
         apps_db = cursor.fetchall()
         apps = [dict(zip(colunas, app)) for app in apps_db]
 
-        # CORREÇÃO AQUI: Enviando a variável 'apps' para o template HTML
-        return render_template("apps.html", apps=apps)
+       
+        return render_template("apps.html", apps=apps, pesquisa=pesquisa)
 
     except Exception as e:
-        return f"Erro interno na base de dados (main): {e}", 500
+        return f"Erro interno na base de dados: {e}", 500
         
     finally:
         if 'cursor' in locals() and cursor: cursor.close()
@@ -125,11 +136,9 @@ def delete_app(app_id):
         conexao = get_db_connection()
         cursor = conexao.cursor()
         
-        # Deleta o aplicativo com base no ID
         cursor.execute("DELETE FROM apps WHERE id = %s", (app_id,))
         conexao.commit()
         
-        # Redireciona de volta para a lista
         return redirect(url_for('dev.app_list'))
     except Exception as e:
         return f"Erro ao deletar o aplicativo: {e}", 500
