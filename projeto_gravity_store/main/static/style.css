@@ -772,32 +772,33 @@ main {
 }
 
 /* ==========================================================================
-   6. CARDS DE APLICATIVOS (O SEGREDO DA ORGANIZAÇÃO)
+   6. CARDS DE APLICATIVOS (IMAGEM EM CIMA, TEXTO EMBAIXO)
    ========================================================================== */
 .cards,
 .cardsG,
 .cardsA {
   display: flex;
   flex-wrap: wrap;
-  gap: 55px;
+  gap: 30px; /* Espaçamento entre os cartões */
   margin-left: 22px;
   margin-top: 10px;
   margin-bottom: 30px;
 }
 
-/* O card individual (Aplica-se à classe e ao ID) */
+/* O cartão individual */
 .card,
 #card {
   display: flex !important;
-  flex-flow: column wrap !important;
+  flex-direction: column !important; /* O SEGREDO: Coloca tudo um embaixo do outro */
   background: linear-gradient(145deg, #000215, #00172b);
-  width: 150px;
-  height: 400px;
+  width: 180px; /* Largura do cartão */
+  min-height: 250px; /* Altura ajustável para caber os textos */
   border-radius: 15px;
   padding: 15px;
   box-sizing: border-box;
   transition: 0.3s;
-  gap: 15px;
+  gap: 12px; /* Espaço exato entre a imagem e o título */
+  align-items: flex-start; /* Alinha o conteúdo à esquerda */
 }
 
 .card:hover,
@@ -806,43 +807,44 @@ main {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
+/* A caixa da imagem no topo */
 .img {
-  width: 150px;
-  height: 100px;
+  width: 100%; /* A imagem preenche a largura do cartão */
+  height: 120px; /* Altura da imagem */
   background-color: #3b476b;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
+  flex-shrink: 0; /* Impede a imagem de ser esmagada */
 }
 
+/* Os textos abaixo da imagem */
 .infos {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  height: 100%;
+  width: 100%;
+  flex-grow: 1; /* Preenche todo o espaço vertical restante */
 }
 
 .title {
-  margin: 0;
+  margin: 0 0 5px 0;
   font-size: 1.2rem;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; /* Adiciona "..." se o nome for longo */
 }
 
 .text {
-  margin: 5px 0 10px 0;
-  font-size: 0.9rem;
+  margin: 0 0 10px 0;
+  font-size: 0.85rem;
   color: #aeb9d6;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.textH:hover {
-  color: #9ad0ff;
-}
-
+/* Área do tamanho e botão (ficará colada no fundo) */
 .stats {
+  margin-top: auto; /* Empurra o botão "Obter" sempre para o fundo do cartão */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -852,7 +854,7 @@ main {
 
 .stats h4 {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   white-space: nowrap;
 }
 
@@ -864,11 +866,12 @@ main {
   font-family: "Google Sans", sans-serif;
   font-weight: bold;
   background-color: #3e4a70;
-  padding: 8px 15px;
+  padding: 6px 14px;
   border-radius: 30px;
   transition: 0.3s;
   text-decoration: none;
   color: white;
+  font-size: 0.85rem;
 }
 
 #obter:hover {
