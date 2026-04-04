@@ -1,0 +1,93 @@
+@font-face {
+  font-family: Plush;
+  src: url(PlushTitulo.otf) format(truetype);
+}
+
+/* Reset Básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "SN Pro", "Google Sans", sans-serif !important;
+  color: white;
+}
+
+body {
+  background: #030030;
+  background: linear-gradient(
+    46deg,
+    rgb(0, 0, 0) 0%,
+    rgb(0, 0, 12) 35%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-bottom: 50px;
+}
+
+/* O fundo estrelado que você já tinha (Mantido) */
+body::before,
+body::after {
+  content: " ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: -2;
+}
+body::before {
+  width: 1px;
+  height: 1px;
+  box-shadow:
+    10vw 15vh #fff,
+    30vw 45vh #fff,
+    70vw 10vh #fff,
+    90vw 85vh #fff,
+    25vw 65vh #fff,
+    55vw 25vh #fff,
+    15vw 95vh #fff,
+    85vw 35vh #fff,
+    40vw 50vh #fff,
+    60vw 80vh #fff,
+    5vw 5vh #fff,
+    95vw 95vh #fff,
+    12vw 33vh #fff,
+    48vw 72vh #fff,
+    82vw 18vh #fff,
+    37vw 88vh #fff,
+    66vw 55vh #fff,
+    22vw 92vh #fff,
+    77vw 41vh #fff,
+    91vw 8vh #fff;
+}
+body::after {
+  width: 2px;
+  height: 2px;
+  opacity: 0.8;
+  z-index: -1;
+  box-shadow:
+    20vw 30vh #fff,
+    60vw 70vh #fff,
+    80vw 20vh #fff,
+    40vw 90vh #fff,
+    10vw 80vh #fff,
+    90vw 40vh #fff,
+    50vw 10vh #fff,
+    30vw 60vh #fff,
+    75vw 50vh #fff,
+    15vw 45vh rgba(255, 255, 255, 0.9),
+    55vw 85vh rgba(255, 255, 255, 0.9),
+    95vw 15vh rgba(255, 255, 255, 0.9);
+}
+
+/* Cabeçalho */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
