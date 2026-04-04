@@ -155,7 +155,8 @@
         <h2 class="titleCard">Jogos Antigos 🕹️</h2>
 
         <div class="cards">
-          {% if apps and app.category == "oldGames" %} {% for app in apps %}
+          {% set tem_jogo_antigo = false %} {% if apps %} {% for app in apps %}
+          {% if app.category == "oldGames" %} {% set tem_jogo_antigo = true %}
           <div class="card">
             <div class="img">
               <img
@@ -194,9 +195,9 @@
               </div>
             </div>
           </div>
-          {% endfor %} {% else %}
+          {% endif %} {% endfor %} {% endif %} {% if not tem_jogo_antigo %}
           <p style="margin-left: 20px; color: #aeb9d6">
-            Nenhum aplicativo publicado ainda. Seja o primeiro!
+            Nenhum jogo antigo publicado ainda. Seja o primeiro!
           </p>
           {% endif %}
         </div>
@@ -212,7 +213,8 @@
         <h2 class="titleCard">Apps Antigos 📱</h2>
 
         <div class="cards">
-          {% if apps and app.category == "oldApps" %} {% for app in apps %}
+          {% set tem_app_antigo = false %} {% if apps %} {% for app in apps %}
+          {% if app.category == "oldApps" %} {% set tem_app_antigo = true %}
           <div class="card">
             <div class="img">
               <img
@@ -251,9 +253,9 @@
               </div>
             </div>
           </div>
-          {% endfor %} {% else %}
+          {% endif %} {% endfor %} {% endif %} {% if not tem_jogo_antigo %}
           <p style="margin-left: 20px; color: #aeb9d6">
-            Nenhum aplicativo publicado ainda. Seja o primeiro!
+            Nenhum jogo antigo publicado ainda. Seja o primeiro!
           </p>
           {% endif %}
         </div>
