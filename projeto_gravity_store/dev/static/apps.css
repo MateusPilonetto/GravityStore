@@ -91,3 +91,21 @@ header {
   align-items: center;
   padding: 20px 0;
 }
+
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#logo {
+  width: 60px;
+  height: 60px;
+}
+
+.titulo {
+  font-family: Plush, sans-serif;
+  color: white;
+  font-size: 2.5rem;
+}
