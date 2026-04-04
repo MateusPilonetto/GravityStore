@@ -789,10 +789,10 @@ main {
 .card,
 #card {
   display: flex !important;
-  flex-direction: column !important; /* O SEGREDO: Coloca tudo um embaixo do outro */
-  background: linear-gradient(145deg, #000215, #00172b);
-  width: 180px; /* Largura do cartão */
-  min-height: 250px; /* Altura ajustável para caber os textos */
+  flex-direction: column !important; 
+  /*background: linear-gradient(145deg, #000215, #00172b);*/
+  width: 180px; 
+  min-height: 250px;
   border-radius: 15px;
   padding: 15px;
   box-sizing: border-box;
@@ -801,11 +801,11 @@ main {
   align-items: flex-start; /* Alinha o conteúdo à esquerda */
 }
 
-.card:hover,
+/* .card:hover,
 #card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
+} */
 
 /* A caixa da imagem no topo */
 .img {
