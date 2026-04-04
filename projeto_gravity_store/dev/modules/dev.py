@@ -91,3 +91,7 @@ def apps():
             cursor.close()
         if 'conexao' in locals() and conexao: 
             conexao.close()
+
+@dev_bp.route("/app_list")
+def app_list():
+    return render_template("apps.html")
