@@ -116,7 +116,15 @@
 
             <div class="infos">
               <h2 class="title">{{ app.nome }}</h2>
-              <span class="text">{{ app.dev_name }} • {{ app.category }}</span>
+              <span class="text"
+                ><a
+                  href="{{ app.link_github }}"
+                  id="obter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >{{ app.dev_name }} </a
+                >• {{ app.category }}</span
+              >
 
               <div class="stats">
                 <h4 id="avaliacao">{{ app.size_mb }} MB</h4>
