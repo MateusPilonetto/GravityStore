@@ -94,4 +94,25 @@ def apps():
 
 @dev_bp.route("/app_list")
 def app_list():
+
+    try:
+        conexao = get_db_connection()
+        cursor = conexao.cursor()
+
+        # 2. NOVO: Vai buscar os últimos 10 aplicativos adicionados
+        comando_apps = "SELECT id, nome, dev_name, category, size_mb, icon_path, link_github, link_download FROM apps ORDER BY data_envio DESC LIMIT 10"
+        cursor.execute(comando_apps)
+        
+        # Converte o resultado para um formato de "Dicionário" (mais fácil para o HTML ler)
+        colunas = [desc[0] for desc in cursor.description]
+        apps_db = cursor.fetchall()
+        apps = [dict(zip(colunas, app)) for app in apps_db]
+
+    except Exception as e:
+        return f"Erro interno na base de dados (main): {e}", 500
+        
+    finally:
+        if cursor: cursor.close()
+        if conexao: conexao.close()
+
     return render_template("apps.html")
