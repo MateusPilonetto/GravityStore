@@ -774,7 +774,6 @@ main {
 /* ==========================================================================
    6. CARDS DE APLICATIVOS (O SEGREDO DA ORGANIZAÇÃO)
    ========================================================================== */
-/* Container dos cards: flexível e usa GAP para dar espaço automático */
 .cards,
 .cardsG,
 .cardsA {
@@ -786,59 +785,58 @@ main {
   margin-bottom: 30px;
 }
 
-/* O card individual - Transformado em classe (.card) e mais responsivo */
-.card {
+/* O card individual (Aplica-se à classe e ao ID) */
+.card,
+#card {
   display: flex;
   align-items: center;
   background: linear-gradient(145deg, #000215, #00172b);
   width: 400px;
-  min-height: 140px;
+  height: 140px; /* Altura fixa para ficarem todos alinhados */
   border-radius: 15px;
   padding: 15px;
   box-sizing: border-box;
   transition: 0.3s;
+  gap: 15px; /* Novo: Dá espaço entre a imagem e o texto automaticamente */
 }
 
-.card:hover {
+.card:hover,
+#card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* ... código existente das classes .cards e .card ... */
-
 .img {
   width: 100px;
   height: 100px;
-  min-width: 100px; /* Impede a imagem de encolher */
-  background-color: #3b476b; /* Cor para quando não há imagem */
+  flex-shrink: 0; /* A regra de ouro: a imagem NUNCA é esmagada */
+  background-color: #3b476b;
   border-radius: 15px;
-  margin-right: 15px;
   overflow: hidden;
-  flex-shrink: 0; /* O SEGREDO: proíbe o texto de esmagar a imagem */
 }
 
 .infos {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: calc(100% - 115px); /* Dá espaço exato para o texto sem empurrar a imagem */
-  overflow: hidden;
+  justify-content: center;
+  flex-grow: 1; /* Pede para ocupar todo o espaço à direita da imagem */
+  min-width: 0; /* O SEGREDO SUPREMO: Permite que o texto gigante seja cortado com os ... */
+  height: 100%;
 }
 
 .title {
-  margin: 0 0 5px 0;
+  margin: 0;
   font-size: 1.2rem;
-  padding-top: 5px;
-  white-space: nowrap; /* Mantém o título numa única linha */
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* Adiciona "..." se o título for comprido */
+  text-overflow: ellipsis;
 }
 
 .text {
-  margin: 0 0 10px 0;
+  margin: 5px 0 10px 0;
   font-size: 0.9rem;
   color: #aeb9d6;
-  white-space: nowrap; /* Mantém a categoria numa única linha */
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -851,24 +849,20 @@ main {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between; /* Espalha tamanho e botão para os lados */
+  justify-content: space-between; /* Encosta o botão e os MB aos cantos opostos */
   width: 100%;
-  gap: 10px;
 }
 
 .stats h4 {
   margin: 0;
   font-size: 14px;
-  white-space: nowrap; /* Impede o "MB" de cair para a linha de baixo */
+  white-space: nowrap;
 }
 
 #avaliacao {
   color: yellow;
 }
 
-/* ... continua com a regra do #obter ... */
-
-/* Botão OBTER dentro do card */
 #obter {
   font-family: "Google Sans", sans-serif;
   font-weight: bold;
@@ -876,8 +870,8 @@ main {
   padding: 8px 15px;
   border-radius: 30px;
   transition: 0.3s;
-  margin-left: auto;
-  /* Joga o botão todo para a direita */
+  text-decoration: none;
+  color: white;
 }
 
 #obter:hover {
