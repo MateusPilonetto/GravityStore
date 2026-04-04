@@ -772,116 +772,115 @@ main {
 }
 
 /* ==========================================================================
-   6. CARDS DE APLICATIVOS (O SEGREDO DA ORGANIZAÇÃO)
+   6. CARDS DE APLICATIVOS (ESTILO MODERNO DA GRAVITY STORE)
    ========================================================================== */
-.cards,
-.cardsG,
-.cardsA {
+.cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 55px;
-  margin-left: 22px;
-  margin-top: 10px;
-  margin-bottom: 30px;
+  gap: 40px; /* Espaço entre os cartões */
+  margin: 20px 0 30px 22px;
+  justify-content: flex-start;
 }
 
-/* O card individual (Aplica-se à classe e ao ID) */
-.card,
-#card {
+/* O cartão individual (Estilo da imagem de referência) */
+.card-moderno {
   display: flex;
-  align-items: center;
-  background: linear-gradient(145deg, #000215, #00172b);
-  width: 400px;
-  height: 140px; /* Altura fixa para ficarem todos alinhados */
-  border-radius: 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  transition: 0.3s;
-  gap: 15px; /* Novo: Dá espaço entre a imagem e o texto automaticamente */
+  background: linear-gradient(145deg, #000215 0%, #00172b 100%); /* Fundo gradiente escuro */
+  width: 380px; /* Largura para caberem vários na tela */
+  height: 180px; /* Altura fixa para manter o alinhamento */
+  border-radius: 15px; /* Cantos arredondados */
+  overflow: hidden; /* Impede que o conteúdo saia do cartão */
+  transition: 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Borda muito subtil */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-.card:hover,
-#card:hover {
+.card-moderno:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  border-color: rgba(154, 208, 255, 0.2); /* Borda brilha no hover */
 }
 
-.img {
-  width: 100px;
-  height: 100px;
-  flex-shrink: 0; /* A regra de ouro: a imagem NUNCA é esmagada */
-  background-color: #3b476b;
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-.infos {
+/* Área de Informações (Esquerda) */
+.card-infos {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex-grow: 1; /* Pede para ocupar todo o espaço à direita da imagem */
-  min-width: 0; /* O SEGREDO SUPREMO: Permite que o texto gigante seja cortado com os ... */
+  padding: 20px;
+  width: 55%; /* Ocupa pouco mais da metade da largura */
   height: 100%;
+  box-sizing: border-box;
+  justify-content: flex-start;
 }
 
-.title {
-  margin: 0;
-  font-size: 1.2rem;
+.card-title {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0 0 5px 0;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; /* Bota "..." se o nome for gigante */
 }
 
-.text {
-  margin: 5px 0 10px 0;
+.card-dev {
   font-size: 0.9rem;
-  color: #aeb9d6;
+  color: #aeb9d6; /* Cinza-azulado */
+  margin: 0 0 8px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.textH:hover {
-  color: #9ad0ff;
-}
-
-.stats {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between; /* Encosta o botão e os MB aos cantos opostos */
-  width: 100%;
-}
-
-.stats h4 {
-  margin: 0;
-  font-size: 14px;
-  white-space: nowrap;
-}
-
-#avaliacao {
-  color: yellow;
-}
-
-#obter {
-  font-family: "Google Sans", sans-serif;
-  font-weight: bold;
-  background-color: #3e4a70;
-  padding: 8px 15px;
+.card-category {
+  font-size: 0.8rem;
+  color: #fbff12; /* Amarelo vibrante da imagem */
+  background: rgba(251, 255, 18, 0.1); /* Fundo amarelo muito transparente */
+  padding: 4px 10px;
   border-radius: 30px;
-  transition: 0.3s;
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: auto; /* Empurra o botão para baixo */
+}
+
+/* Área do Botão */
+.card-action {
+  margin-top: 10px;
+}
+
+.btn-obter {
+  background-color: rgba(62, 74, 112, 0.6); /* Botão azul-acinzentado */
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 30px;
   text-decoration: none;
-  color: white;
+  font-family: "SN Pro", sans-serif;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: inline-block;
+  transition: 0.3s;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-#obter:hover {
-  background-color: #9ad0ff;
-  transform: scale(1.1);
-  color: #1e2235;
+.btn-obter:hover {
+  background-color: #9ad0ff; /* Azul Gravity no hover */
+  color: #030030;
+  transform: scale(1.05);
 }
 
-.titleCard {
-  margin-left: 20px;
+/* Área da Imagem Dinâmica (Direita) */
+.card-img-wrapper {
+  width: 45%; /* Ocupa o restante da largura */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #000; /* Fundo preto caso a imagem falhe */
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Recorta a imagem para preencher todo o espaço sem distorcer */
 }
 
 /* ==========================================================================

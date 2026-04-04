@@ -99,41 +99,28 @@
         <h2 class="titleCard">Mais Recentes ✨</h2>
 
         <div class="cards">
-          {% if apps %} {% for app in apps %}
-          <div class="card">
-            <div class="img">
-              <img
-                src="{{ url_for('dev.static', filename='uploads/' ~ app.icon_path) }}"
-                alt="Ícone do app {{ app.nome }}"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-                  border-radius: 15px;
-                "
-              />
-            </div>
+          {% if apps %}
+            {% for app in apps %}
+            <div class="card-moderno">
+              
+              <div class="card-infos">
+                <h2 class="card-title">{{ app.nome }}</h2>
+                <span class="card-dev">{{ app.dev_name }}</span>
+                <span class="card-category">{{ app.category }}</span>
+                <div class="card-action">
+                  <a href="{{ app.link_download }}" class="btn-obter" target="_blank" rel="noopener noreferrer">OBTER</a>
+                </div>
+              </div>
 
-            <div class="infos">
-              <h2 class="title">{{ app.nome }}</h2>
-              <span class="text">{{ app.dev_name }} • {{ app.category }}</span>
-
-              <div class="stats">
-                <h4 id="avaliacao">{{ app.size_mb }} MB</h4>
-                <a
-                  href="{{ app.link_download }}"
-                  id="obter"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >OBTER</a
-                >
+              <div class="card-img-wrapper">
+                <img src="{{ url_for('dev.static', filename='uploads/' ~ app.icon_path) }}" 
+                     alt="Ícone do app {{ app.nome }}" 
+                     class="card-img" />
               </div>
             </div>
-          </div>
-          {% endfor %} {% else %}
-          <p style="margin-left: 20px; color: #aeb9d6">
-            Nenhum aplicativo publicado ainda. Seja o primeiro!
-          </p>
+            {% endfor %}
+          {% else %}
+            <p style="margin-left: 20px; color: #aeb9d6;">Nenhum aplicativo publicado ainda. Seja o primeiro!</p>
           {% endif %}
         </div>
 
