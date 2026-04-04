@@ -788,17 +788,16 @@ main {
 /* O card individual (Aplica-se à classe e ao ID) */
 .card,
 #card {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+  display: flex !important;
+  flex-flow: column wrap !important;
   background: linear-gradient(145deg, #000215, #00172b);
   width: 150px;
-  height: 300px;
+  height: 400px;
   border-radius: 15px;
   padding: 15px;
   box-sizing: border-box;
   transition: 0.3s;
-  gap: 15px; /* Novo: Dá espaço entre a imagem e o texto automaticamente */
+  gap: 15px;
 }
 
 .card:hover,
@@ -810,7 +809,6 @@ main {
 .img {
   width: 150px;
   height: 100px;
-  flex-shrink: 0;
   background-color: #3b476b;
   border-radius: 15px;
   overflow: hidden;
@@ -848,7 +846,7 @@ main {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   width: 100%;
 }
 
