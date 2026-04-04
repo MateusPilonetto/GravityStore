@@ -776,7 +776,7 @@ main {
    ========================================================================== */
 .cards {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   gap: 40px; /* Espaço entre os cartões */
   margin: 20px 0 30px 22px;
   justify-content: flex-start;
@@ -785,7 +785,11 @@ main {
 /* O cartão individual (Estilo da imagem de referência) */
 .card-moderno {
   display: flex;
-  background: linear-gradient(145deg, #000215 0%, #00172b 100%); /* Fundo gradiente escuro */
+  background: linear-gradient(
+    145deg,
+    #000215 0%,
+    #00172b 100%
+  ); /* Fundo gradiente escuro */
   width: 380px; /* Largura para caberem vários na tela */
   height: 180px; /* Altura fixa para manter o alinhamento */
   border-radius: 15px; /* Cantos arredondados */
