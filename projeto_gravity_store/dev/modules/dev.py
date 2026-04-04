@@ -116,3 +116,91 @@ def app_list():
     finally:
         if 'cursor' in locals() and cursor: cursor.close()
         if 'conexao' in locals() and conexao: conexao.close()
+
+
+# ROTA PARA DELETAR O APP
+@dev_bp.route("/delete_app/<int:app_id>")
+def delete_app(app_id):
+    try:
+        conexao = get_db_connection()
+        cursor = conexao.cursor()
+        
+        # Deleta o aplicativo com base no ID
+        cursor.execute("DELETE FROM apps WHERE id = %s", (app_id,))
+        conexao.commit()
+        
+        # Redireciona de volta para a lista
+        return redirect(url_for('dev.app_list'))
+    except Exception as e:
+        return f"Erro ao deletar o aplicativo: {e}", 500
+    finally:
+        if 'cursor' in locals() and cursor: cursor.close()
+        if 'conexao' in locals() and conexao: conexao.close()
+
+
+# ROTA PARA EDITAR O APP
+@dev_bp.route("/edit_app/<int:app_id>", methods=['GET', 'POST'])
+def edit_app(app_id):
+    conexao = get_db_connection()
+    cursor = conexao.cursor()
+
+    # SE FOR POST: O usuário clicou no botão de salvar as edições
+    if request.method == 'POST':
+        nome = request.form.get('nome', '')
+        dev_name = request.form.get('devName', '') 
+        link_github  = request.form.get('linkG', '')
+        link_download  = request.form.get('linkA', '')
+        description  = request.form.get('description', '')
+        category  = request.form.get('category', '')
+        version  = request.form.get('version', '')
+        size_mb  = request.form.get('size', 0)
+
+        # Montamos uma lista de valores básicos
+        valores = [nome, dev_name, link_github, link_download, description, category, version, size_mb]
+        sql_update_icon = ""
+
+        # Verifica se o usuário enviou uma nova imagem de ícone (se não enviar, mantemos a antiga)
+        icon_app = request.files.get('iconApp')
+        if icon_app and icon_app.filename != '':
+            icon_filename = secure_filename(icon_app.filename)
+            icon_path = os.path.join(UPLOAD_FOLDER, icon_filename)
+            icon_app.save(icon_path)
+            sql_update_icon = ", icon_path = %s"
+            valores.append(icon_filename)
+        
+        # Adiciona o ID no final para a cláusula WHERE do banco de dados
+        valores.append(app_id)
+
+        try:
+            sql = f"""
+                UPDATE apps 
+                SET nome = %s, dev_name = %s, link_github = %s, link_download = %s, 
+                    description = %s, category = %s, version = %s, size_mb = %s {sql_update_icon}
+                WHERE id = %s
+            """
+            cursor.execute(sql, tuple(valores))
+            conexao.commit()
+            return redirect(url_for('dev.app_list'))
+        except Exception as e:
+            return f"Erro ao atualizar o aplicativo: {e}", 500
+        finally:
+            cursor.close()
+            conexao.close()
+
+    # SE FOR GET: O usuário apenas abriu a página de edição (precisamos preencher os dados)
+    else:
+        try:
+            cursor.execute("SELECT * FROM apps WHERE id = %s", (app_id,))
+            colunas = [desc[0] for desc in cursor.description]
+            app_db = cursor.fetchone()
+            
+            if app_db:
+                app = dict(zip(colunas, app_db))
+                return render_template("edit_app.html", app=app)
+            else:
+                return "App não encontrado", 404
+        except Exception as e:
+            return f"Erro ao carregar dados do aplicativo: {e}", 500
+        finally:
+            cursor.close()
+            conexao.close()

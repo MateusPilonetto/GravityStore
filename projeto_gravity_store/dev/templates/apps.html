@@ -71,17 +71,19 @@
                 </div>
                 <div class="btns">
                   <a
-                    href="#"
+                    href="{{ url_for('dev.edit_app', app_id=app.id) }}"
                     id="obter"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     >EDITAR</a
                   >
                   <a
-                    href="#"
+                    href="{{ url_for('dev.delete_app', app_id=app.id) }}"
                     id="excluir"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onclick="return confirm('Tem certeza que deseja excluir o app {{ app.nome }}?');"
+                    style="
+                      background-color: rgba(255, 77, 77, 0.2);
+                      border-color: #ff4d4d;
+                      color: #ff4d4d;
+                    "
                     >EXCLUIR</a
                   >
                 </div>

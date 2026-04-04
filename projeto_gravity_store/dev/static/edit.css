@@ -1,0 +1,284 @@
+@font-face {
+  font-family: Plush;
+  src: url(PlushTitulo.otf) format(truetype);
+}
+
+/* Reset Básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "SN Pro", "Google Sans", sans-serif !important;
+  color: white;
+}
+
+body {
+  background: #030030;
+  background: linear-gradient(
+    46deg,
+    rgb(0, 0, 0) 0%,
+    rgb(0, 0, 12) 35%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-bottom: 50px;
+}
+
+/* O fundo estrelado que você já tinha (Mantido) */
+body::before,
+body::after {
+  content: " ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: -2;
+}
+body::before {
+  width: 1px;
+  height: 1px;
+  box-shadow:
+    10vw 15vh #fff,
+    30vw 45vh #fff,
+    70vw 10vh #fff,
+    90vw 85vh #fff,
+    25vw 65vh #fff,
+    55vw 25vh #fff,
+    15vw 95vh #fff,
+    85vw 35vh #fff,
+    40vw 50vh #fff,
+    60vw 80vh #fff,
+    5vw 5vh #fff,
+    95vw 95vh #fff,
+    12vw 33vh #fff,
+    48vw 72vh #fff,
+    82vw 18vh #fff,
+    37vw 88vh #fff,
+    66vw 55vh #fff,
+    22vw 92vh #fff,
+    77vw 41vh #fff,
+    91vw 8vh #fff;
+}
+body::after {
+  width: 2px;
+  height: 2px;
+  opacity: 0.8;
+  z-index: -1;
+  box-shadow:
+    20vw 30vh #fff,
+    60vw 70vh #fff,
+    80vw 20vh #fff,
+    40vw 90vh #fff,
+    10vw 80vh #fff,
+    90vw 40vh #fff,
+    50vw 10vh #fff,
+    30vw 60vh #fff,
+    75vw 50vh #fff,
+    15vw 45vh rgba(255, 255, 255, 0.9),
+    55vw 85vh rgba(255, 255, 255, 0.9),
+    95vw 15vh rgba(255, 255, 255, 0.9);
+}
+
+/* Cabeçalho */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#logo {
+  width: 60px;
+  height: 60px;
+}
+
+.titulo {
+  font-family: Plush, sans-serif;
+  color: white;
+  font-size: 2.5rem;
+}
+
+/* Container Principal */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Cartão do Formulário */
+.cadastro {
+  background: rgba(0, 5, 25, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  border-radius: 1.5rem;
+  padding: 40px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.cadastro h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #9ad0ff;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Grid do Formulário - Responsivo */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  } /* No celular vira 1 coluna */
+}
+
+/* Campos de Input */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #b0b8d1;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #3b476b;
+  background-color: rgba(30, 34, 53, 0.7);
+  color: #ffffff;
+  font-family: "SN Pro", "Google Sans", sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b779a;
+}
+
+/* Efeito ao clicar no input */
+input:focus,
+textarea:focus {
+  border-color: #9ad0ff;
+  background-color: rgba(30, 34, 53, 1);
+  box-shadow: 0 0 10px rgba(154, 208, 255, 0.2);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Customização dos botões de Upload de Arquivo */
+input[type="file"] {
+  padding: 10px;
+  color: #9ad0ff;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+  background: #3e4a70;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #9ad0ff;
+  color: #000;
+}
+
+/* Botão Enviar */
+.btn-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 15px;
+  width: 100%;
+}
+
+.btn-primary,
+.btn-secondary {
+  border-radius: 12px;
+  border: none;
+  font-family: "SN Pro", sans-serif;
+  font-size: 1.2rem;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background-color: #3e4a70;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #9ad0ff;
+  border: 1px solid #3e4a70;
+}
+.btn-secondary:hover {
+  background-color: rgba(62, 74, 112, 0.3);
+  border-color: #9ad0ff;
+  color: white;
+  transform: translateY(-3px);
+}
+
+#botao {
+  background-color: #3e4a70;
+  border-radius: 12px;
+  border: none;
+  color: #ffffff;
+  font-family: "SN Pro", "Google Sans", sans-serif;
+  font-size: 1.2rem;
+  padding: 12px 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#botao:hover {
+  background-color: #9ad0ff;
+  color: #030030;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(154, 208, 255, 0.4);
+}
+
+.cadastro {
+  font-family: "SN Pro", "Google Sans", sans-serif;
+}
