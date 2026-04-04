@@ -10,5 +10,16 @@
     />
     <title>Lista de Apps</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <a href="{{ url_for('main.home') }}" class="logo-link">
+        <img
+          src="{{ url_for('dev.static', filename='Gwhite.svg') }}"
+          alt="Logotipo da Gravity Store"
+          id="logo"
+        />
+        <h1 class="titulo">Gravity Store</h1>
+      </a>
+    </header>
+  </body>
 </html>
