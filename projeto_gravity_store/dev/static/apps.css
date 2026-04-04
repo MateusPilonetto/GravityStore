@@ -137,7 +137,7 @@ header {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
   border-radius: 1.5rem;
   width: 180px;
-  min-height: 250px;
+  min-height: 260px;
   border-radius: 15px;
   padding: 15px;
   box-sizing: border-box;
@@ -225,6 +225,28 @@ header {
   color: #1e2235;
 }
 
+#excluir {
+  font-family: "Google Sans", sans-serif;
+  font-weight: bold;
+  background-color: #370000;
+  padding: 6px 14px;
+  border-radius: 30px;
+  transition: 0.3s;
+  text-decoration: none;
+  color: white;
+  font-size: 0.85rem;
+}
+
+#excluir:hover {
+  background-color: #ff4b4b;
+  transform: scale(1.1);
+  color: #290000;
+}
+
 .titleCard {
   margin-left: 20px;
+}
+
+.btns {
+  display: flex;
 }
