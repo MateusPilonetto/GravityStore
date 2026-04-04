@@ -10,24 +10,20 @@ dev_bp = Blueprint('dev', __name__,
                         static_folder='../static',
                         static_url_path='/dev_static')
 
-# Define a pasta onde as imagens serão salvas
 UPLOAD_FOLDER = os.path.join('dev', 'static', 'uploads')
-os.makedirs(UPLOAD_FOLDER, exist_ok=True) # Cria a pasta se não existir
+os.makedirs(UPLOAD_FOLDER, exist_ok=True) 
 
 @dev_bp.route("/dev")
 def dev():
     return render_template("dev.html")
 
-# 1. Adicionado methods=['POST']
 @dev_bp.route("/submit_app", methods=['POST'])
 def apps():
-    # 1. RASTREADOR: Imprime no terminal o que está chegando
     print("===== DADOS RECEBIDOS DO FORMULÁRIO =====")
     print("Textos (Form):", request.form)
     print("Arquivos (Files):", request.files)
     print("=========================================")
 
-    # 2. Captura super segura (Se não vier nada, ele salva como string vazia ou None)
     nome = request.form.get('nome', '')
     dev_name = request.form.get('devName', '') 
     link_github  = request.form.get('linkG', '')
@@ -37,20 +33,16 @@ def apps():
     version  = request.form.get('version', '')
     size_mb  = request.form.get('size', 0)
 
-    # Verifica se algum campo essencial está vazio
     if not nome or not dev_name:
         return "Erro: O nome do app ou o nome do dev estão faltando!", 400
-
-    # Continua o código dos arquivos que te passei antes...
     
-    # 3 e 4. Pegando e salvando os arquivos (imagens) via request.files
     icon_app = request.files['iconApp']
     icon_filename = ""
     
     if icon_app and icon_app.filename != '':
         icon_filename = secure_filename(icon_app.filename)
         icon_path = os.path.join(UPLOAD_FOLDER, icon_filename)
-        icon_app.save(icon_path) # Salva a imagem na pasta
+        icon_app.save(icon_path)
 
     screenshots = request.files.getlist('screenshots')
     screenshots_filenames = []
@@ -59,17 +51,15 @@ def apps():
         if screenshot and screenshot.filename != '':
             filename = secure_filename(screenshot.filename)
             file_path = os.path.join(UPLOAD_FOLDER, filename)
-            screenshot.save(file_path) # Salva a imagem na pasta
+            screenshot.save(file_path)
             screenshots_filenames.append(filename)
     
-    # Transforma a lista de screenshots em um formato JSON para o banco de dados
     screenshots_json = json.dumps(screenshots_filenames)
 
     try:
         conexao = get_db_connection()
         cursor = conexao.cursor()
         
-        # 5 e 6. Corrigido para as 10 colunas e os 10 marcadores (%s)
         sql = """
             INSERT INTO apps 
             (nome, dev_name, link_github, link_download, description, category, version, size_mb, icon_path, screenshots_paths) 
@@ -81,7 +71,6 @@ def apps():
         cursor.execute(sql, valores)
         conexao.commit()
         
-        # Redireciona para evitar reenvio de formulário ao atualizar a página
         return render_template("dev.html", sucesso="App enviado com sucesso!")
         
     except Exception as e:
@@ -147,13 +136,12 @@ def delete_app(app_id):
         if 'conexao' in locals() and conexao: conexao.close()
 
 
-# ROTA PARA EDITAR O APP
+
 @dev_bp.route("/edit_app/<int:app_id>", methods=['GET', 'POST'])
 def edit_app(app_id):
     conexao = get_db_connection()
     cursor = conexao.cursor()
 
-    # SE FOR POST: O usuário clicou no botão de salvar as edições
     if request.method == 'POST':
         nome = request.form.get('nome', '')
         dev_name = request.form.get('devName', '') 
@@ -164,11 +152,9 @@ def edit_app(app_id):
         version  = request.form.get('version', '')
         size_mb  = request.form.get('size', 0)
 
-        # Montamos uma lista de valores básicos
         valores = [nome, dev_name, link_github, link_download, description, category, version, size_mb]
         sql_update_icon = ""
 
-        # Verifica se o usuário enviou uma nova imagem de ícone (se não enviar, mantemos a antiga)
         icon_app = request.files.get('iconApp')
         if icon_app and icon_app.filename != '':
             icon_filename = secure_filename(icon_app.filename)
@@ -177,7 +163,6 @@ def edit_app(app_id):
             sql_update_icon = ", icon_path = %s"
             valores.append(icon_filename)
         
-        # Adiciona o ID no final para a cláusula WHERE do banco de dados
         valores.append(app_id)
 
         try:
@@ -196,7 +181,6 @@ def edit_app(app_id):
             cursor.close()
             conexao.close()
 
-    # SE FOR GET: O usuário apenas abriu a página de edição (precisamos preencher os dados)
     else:
         try:
             cursor.execute("SELECT * FROM apps WHERE id = %s", (app_id,))

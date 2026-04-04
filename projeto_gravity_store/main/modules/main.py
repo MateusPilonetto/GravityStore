@@ -11,7 +11,7 @@ main_bp = Blueprint('main', __name__,
 def home():
     userLogado = session.get('usuario_logado') 
     userDev = 0 
-    apps = [] # Lista vazia para guardar os apps
+    apps = []
 
     conexao = None
     cursor = None
@@ -19,7 +19,6 @@ def home():
         conexao = get_db_connection()
         cursor = conexao.cursor()
 
-        # 1. Verifica se o utilizador é Dev
         if userLogado:
             comando_sql = "SELECT is_dev FROM people WHERE id = %s"
             cursor.execute(comando_sql, (userLogado,))
@@ -27,11 +26,9 @@ def home():
             if resultado:
                 userDev = resultado[0]
 
-        # 2. NOVO: Vai buscar os últimos 10 aplicativos adicionados
         comando_apps = "SELECT id, nome, dev_name, category, size_mb, icon_path, link_github, link_download FROM apps ORDER BY data_envio DESC LIMIT 10"
         cursor.execute(comando_apps)
         
-        # Converte o resultado para um formato de "Dicionário" (mais fácil para o HTML ler)
         colunas = [desc[0] for desc in cursor.description]
         apps_db = cursor.fetchall()
         apps = [dict(zip(colunas, app)) for app in apps_db]
@@ -43,7 +40,6 @@ def home():
         if cursor: cursor.close()
         if conexao: conexao.close()
     
-    # Envia a lista 'apps' para a página HTML
     return render_template('index.html', admin_status=userDev, apps=apps)
 
 @main_bp.route("/pesquisa")
