@@ -44,5 +44,18 @@ def home():
 
 @main_bp.route("/pesquisa")
 def pesquisa():
-    termo = request.args.get('name') 
-    return render_template("search.html", busca=termo)
+    try:
+        termo = request.args.get('pesquisa') 
+        conexao = get_db_connection()
+        cursor = conexao.cursor()
+
+        sql = "SELECT id, nome, email FROM people WHERE LOWER(nome) = LOWER('termo');"
+        cursor.execute(sql, (termo))
+
+        usuario = cursor.fetchone()
+        
+    except Exception as e:
+        return f"Ocorreu um erro no banco: {e}"
+    finally:
+        if cursor: cursor.close()
+        if conexao: conexao.close()
