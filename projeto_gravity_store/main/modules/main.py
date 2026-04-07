@@ -44,15 +44,27 @@ def home():
 
 @main_bp.route("/pesquisa")
 def pesquisa():
+    conexao = None
+    cursor = None
     try:
         termo = request.args.get('pesquisa') 
         conexao = get_db_connection()
         cursor = conexao.cursor()
 
-        sql = "SELECT nome, description FROM apps WHERE LOWER(nome) = LOWER('termo');"
-        cursor.execute(sql, (termo))
+        # Trocamos 'termo' por ? (Assumindo SQLite)
+        sql = "SELECT nome, description FROM apps WHERE LOWER(nome) = LOWER(?);"
+        
+        # Adicionamos a vírgula para transformar em tupla
+        cursor.execute(sql, (termo,))
 
-        usuario = cursor.fetchone()
+        # Mudei o nome da variável de 'usuario' para 'app_resultado' por semântica
+        app_resultado = cursor.fetchone() 
+        
+        # Apenas para testar o retorno:
+        if app_resultado:
+            return f"App encontrado: {app_resultado['nome']}" # ou app_resultado[0] dependendo de como o cursor está configurado
+        else:
+            return "Nenhum app encontrado com esse nome exato."
         
     except Exception as e:
         return f"Ocorreu um erro no banco: {e}"
