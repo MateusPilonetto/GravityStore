@@ -49,7 +49,7 @@ def pesquisa():
         conexao = get_db_connection()
         cursor = conexao.cursor()
 
-        sql = "SELECT id, nome, email FROM people WHERE LOWER(nome) = LOWER('termo');"
+        sql = "SELECT nome, description FROM apps WHERE LOWER(nome) = LOWER('termo');"
         cursor.execute(sql, (termo))
 
         usuario = cursor.fetchone()
