@@ -2,7 +2,6 @@ import mysql.connector
 import os
 
 def get_db_connection():
-    # O os.getenv busca os valores que você vai cadastrar no Render
     connection = mysql.connector.connect(
         host=os.getenv("DB_HOST"),
         port=os.getenv("DB_PORT"),
