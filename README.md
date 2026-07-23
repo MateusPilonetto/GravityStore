@@ -35,7 +35,7 @@ The project is designed to be modular, provider-based, and easily extensible.
 | Provider | Status |
 |----------|--------|
 | Google Play | 🚧 Planned |
-| F-Droid | 🚧 Planned |
+| F-Droid | Connected |
 | IzzyOnDroid | 🚧 Planned |
 | GitHub Releases | 🚧 Planned |
 | Custom Repository | 🚧 Planned |
