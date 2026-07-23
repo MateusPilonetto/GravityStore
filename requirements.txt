@@ -1,0 +1,18 @@
+# Core Framework
+Flask
+
+# HTTP Client
+httpx
+
+# Serialization & Validation
+pydantic
+
+# HTML Parsing (for future providers)
+beautifulsoup4
+lxml
+
+# ASGI Server for development (to support async routes)
+uvicorn
+
+# Testing
+pytest

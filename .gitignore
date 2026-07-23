@@ -194,3 +194,8 @@ projeto_gravity_store/.vs/projeto_gravity_store.slnx/v18/DocumentLayout.json
 
 #files
 plans-action.md
+
+# Ambientes Virtuais
+.venv/
+venv/
+env/

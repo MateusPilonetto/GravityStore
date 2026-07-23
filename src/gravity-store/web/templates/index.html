@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#060817">
+    <meta name="description" content="Descubra aplicativos Android de código aberto pelo catálogo F-Droid.">
+    <title>Gravity Store — apps livres para Android</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="aurora aurora-left" aria-hidden="true"></div>
+    <div class="aurora aurora-right" aria-hidden="true"></div>
+
+    <header class="topbar shell">
+        <a class="brand" href="{{ url_for('index') }}" aria-label="Início do Gravity Store">
+            <span class="gravity-mark" aria-hidden="true"><span>G</span><i></i></span>
+            <span>Gravity <b>Store</b></span>
+        </a>
+
+        <nav class="top-links" aria-label="Navegação principal">
+            <a href="{{ url_for('index') }}" class="{% if not showing_results %}is-active{% endif %}">Descobrir</a>
+            <a href="{{ url_for('index', q='apps') }}">Aplicativos</a>
+            <a href="{{ url_for('index', q='jogos') }}">Jogos</a>
+            <a href="#about">Sobre</a>
+        </nav>
+
+        <a class="provider-status" href="https://f-droid.org/" target="_blank" rel="noreferrer">
+            <span></span> F-Droid conectado
+        </a>
+    </header>
+
+    <main>
+        <section class="hero shell" aria-labelledby="hero-title">
+            <p class="eyebrow"><i></i> Catálogo aberto para Android</p>
+            <h1 id="hero-title">Explore apps que deixam<br>você no <em>controle.</em></h1>
+            <p class="hero-copy">A Gravity Store reúne a descoberta que existia antes em uma experiência mais limpa, agora conectada ao catálogo público do F-Droid.</p>
+
+            <form class="search-form" method="get" action="{{ url_for('index') }}" role="search">
+                <label class="sr-only" for="search">Pesquisar apps no F-Droid</label>
+                <svg class="search-symbol" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"></circle><path d="m16 16 4.5 4.5"></path></svg>
+                <input id="search" name="q" type="search" value="{{ query }}" placeholder="Pesquisar apps, pacotes ou ideias…" autocomplete="off" maxlength="120">
+                <button type="submit">Pesquisar <span aria-hidden="true">→</span></button>
+            </form>
+
+            <div class="quick-searches" aria-label="Sugestões de busca">
+                <span>Experimente</span>
+                <a href="{{ url_for('index', q='mapas') }}">Mapas</a>
+                <a href="{{ url_for('index', q='podcast') }}">Podcasts</a>
+                <a href="{{ url_for('index', q='privacidade') }}">Privacidade</a>
+            </div>
+        </section>
+
+        {% if showing_results %}
+            <section class="results shell" aria-labelledby="results-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Busca no F-Droid</p>
+                        <h2 id="results-title">Resultados para “{{ query }}”</h2>
+                    </div>
+                    {% if not search_error %}<span class="result-count">{{ apps|length }} resultado{% if apps|length != 1 %}s{% endif %}</span>{% endif %}
+                </div>
+
+                {% if search_error %}
+                    <div class="notice" role="alert"><span aria-hidden="true">!</span>{{ search_error }}</div>
+                {% elif apps %}
+                    <div class="app-grid">
+                        {% for app in apps %}
+                            {% include "partials/app-card.html" %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="empty-state">
+                        <span class="empty-icon" aria-hidden="true">⌕</span>
+                        <h3>Nenhum app encontrado</h3>
+                        <p>Tente outra palavra, nome de pacote ou uma busca mais ampla.</p>
+                        <a href="{{ url_for('index') }}">Voltar às descobertas <span aria-hidden="true">→</span></a>
+                    </div>
+                {% endif %}
+            </section>
+        {% else %}
+            <section class="collections shell" aria-label="Coleções em destaque">
+                {% for collection in collections %}
+                    <section class="collection" id="collection-{{ loop.index }}" aria-labelledby="collection-title-{{ loop.index }}">
+                        <div class="section-heading">
+                            <div>
+                                <p class="eyebrow">{{ collection.eyebrow }}</p>
+                                <h2 id="collection-title-{{ loop.index }}">{{ collection.title }}</h2>
+                                <p class="section-description">{{ collection.description }}</p>
+                            </div>
+                            {% if loop.index == 1 %}
+                                <a class="section-link" href="{{ url_for('index', q='open source') }}">Explorar catálogo <span aria-hidden="true">→</span></a>
+                            {% endif %}
+                        </div>
+                        <div class="app-grid {% if collection.apps|length < 4 %}compact-grid{% endif %}">
+                            {% for app in collection.apps %}
+                                {% include "partials/app-card.html" %}
+                            {% endfor %}
+                        </div>
+                    </section>
+                {% endfor %}
+            </section>
+        {% endif %}
+
+        <section class="about shell" id="about" aria-labelledby="about-title">
+            <div class="about-orbit" aria-hidden="true"><span>✦</span></div>
+            <div>
+                <p class="eyebrow">Sobre a Gravity Store</p>
+                <h2 id="about-title">Uma interface mais livre para um ecossistema aberto.</h2>
+            </div>
+            <p>A antiga ideia de reunir apps, jogos e ferramentas continua aqui — sem o acoplamento ao banco anterior. As buscas usam a API oficial de pesquisa do F-Droid; cada card abre a página oficial do aplicativo para uma instalação informada e segura.</p>
+        </section>
+    </main>
+
+    <nav class="orbit-dock" aria-label="Atalhos do catálogo">
+        <a class="{% if not showing_results %}is-active{% endif %}" href="{{ url_for('index') }}"><span aria-hidden="true">✦</span> Descobrir</a>
+        <a href="{{ url_for('index', q='apps') }}"><span aria-hidden="true">▦</span> Apps</a>
+        <a href="{{ url_for('index', q='jogos') }}"><span aria-hidden="true">⌘</span> Jogos</a>
+        <a href="{{ url_for('index', q='termux') }}"><span aria-hidden="true">⌁</span> Avançado</a>
+    </nav>
+
+    <footer class="site-footer shell">
+        <a class="brand footer-brand" href="{{ url_for('index') }}"><span class="gravity-mark" aria-hidden="true"><span>G</span><i></i></span>Gravity <b>Store</b></a>
+        <span>Descoberta aberta para Android.</span>
+        <a href="{{ url_for('health') }}">Status da API</a>
+    </footer>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
