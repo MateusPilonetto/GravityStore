@@ -3,7 +3,7 @@
 > A modular and extensible Python backend for discovering, searching and downloading Android applications from multiple repositories through a unified API.
 
 <p align="center">
-    <img src="docs/assets/logo.png" alt="GravityStore Logo" width="180">
+    <img src="docs/assets/logo.svg" alt="GravityStore Logo" width="180">
 </p>
 
 ---
